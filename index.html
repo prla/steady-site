@@ -423,15 +423,15 @@
       <p class="text-[#3B435B] text-xl">Launching March 2026. Early access will be limited.</p>
 
       <!-- Email input -->
-      <form id="waitlist-form" class="bg-white border border-[#F1F5F9] rounded-3xl flex items-center gap-6 pl-6 pr-2 py-2 w-full max-w-[602px]">
+      <form name="waitlist" netlify class="bg-white border border-[#F1F5F9] rounded-3xl flex items-center gap-6 pl-6 pr-2 py-2 w-full max-w-[602px]">
         <input
           type="email"
-          id="email-input"
+          name="email"
           placeholder="Enter your email"
           required
           class="flex-1 text-sm text-[#141824] placeholder-[#94A3B8] bg-transparent outline-none min-w-0"
         />
-        <button type="submit" id="waitlist-btn" class="bg-[#2663EB] text-white text-lg font-semibold px-8 py-4 rounded-2xl hover:bg-[#1d4ed8] transition-colors shrink-0">
+        <button type="submit" class="bg-[#2663EB] text-white text-lg font-semibold px-8 py-4 rounded-2xl hover:bg-[#1d4ed8] transition-colors shrink-0">
           Join Waitlist
         </button>
       </form>
@@ -476,16 +476,7 @@
       }
     }
 
-    document.getElementById('waitlist-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      var email = document.getElementById('email-input').value;
-      if (email) {
-        document.getElementById('waitlist-btn').textContent = 'Joined!';
-        document.getElementById('waitlist-btn').disabled = true;
-        document.getElementById('waitlist-btn').classList.add('opacity-75');
-        // TODO: send email to backend
-      }
-    });
+
   </script>
 
 </body>
