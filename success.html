@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're on the list — Steady</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Rubik', 'system-ui', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="min-h-screen bg-white text-[#141824] font-sans antialiased flex flex-col items-center justify-center px-6" style="background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(239,246,255,1) 100%);">
+
+  <div class="max-w-[480px] text-center flex flex-col items-center gap-6">
+    <img src="images/logo.svg" alt="Steady" class="h-11" />
+
+    <div class="flex flex-col gap-3 pt-4">
+      <h1 class="text-[32px] lg:text-[40px] font-bold leading-tight">You're on the list.</h1>
+      <p class="text-[#3B435B] text-lg leading-relaxed">
+        We'll reach out when early access opens. In the meantime, keep riding.
+      </p>
+    </div>
+
+    <a href="/" class="bg-[#2663EB] text-white text-base font-semibold px-8 py-3 rounded-2xl hover:bg-[#1d4ed8] transition-colors inline-block mt-4">
+      Back to Steady
+    </a>
+  </div>
+
+</body>
+</html>
