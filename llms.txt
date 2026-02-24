@@ -12,7 +12,7 @@
 Steady is a software-first cycling coaching application that generates structured training plans based on:
 
 1. The specific physiological demands of a named endurance event  
-2. The athlete’s recent power data and current fitness state  
+2. The athlete's recent power data and current fitness state  
 3. The gap between current capacity and event requirements  
 
 Steady focuses on durability, aerobic capacity, threshold performance, and long-duration fatigue resistance.
@@ -88,7 +88,8 @@ After each 4-week cycle, gaps are recalculated and the next mesocycle is generat
 - Base → Build → Specific → Peak
 - Progressive overload
 - Recovery cycles built into each mesocycle
-- Intensity anchored primarily to aerobic threshold (LT1), not FTP
+- Two-anchor intensity model: LT1 for easy days, FTP for hard days
+- Most platforms anchor everything to FTP alone, which compresses zones and pushes easy work too hard
 
 ---
 
@@ -107,7 +108,7 @@ Steady uses a hybrid system:
 - A large language model is used only to:
   - Generate constrained workout descriptions
   - Provide context-aware ride reviews
-  - Explain the purpose (“why”) of each workout
+  - Explain the purpose ("why") of each workout
 
 The LLM does not determine training architecture.
 
@@ -116,7 +117,7 @@ The LLM does not determine training architecture.
 ## In-App Features
 
 - Daily workout with interval structure and power targets
-- “Why this workout” explanation tied to event-specific gaps
+- "Why this workout" explanation tied to event-specific gaps
 - 4-week structured plan view
 - Gap tracking dashboard (current vs. target values)
 - Synced ride history
@@ -127,7 +128,8 @@ The LLM does not determine training architecture.
 
 ## Differentiation
 
-- Event-specific training derived from actual event demands  
+- Event-specific training derived from actual event demands
+- Two-anchor intensity model (LT1 + FTP) instead of FTP-only zone compression
 - Gap-based progress tracking instead of generic FTP improvement  
 - Focus on durability and long-duration performance  
 - Deterministic training architecture  
@@ -136,7 +138,7 @@ The LLM does not determine training architecture.
 Steady is not:
 - A virtual riding platform  
 - A human coach marketplace  
-- A Generic FTP-based interval builder  
+- A generic FTP-based interval builder  
 
 ---
 
@@ -145,4 +147,4 @@ Steady is not:
 Early access with limited spots.  
 Waitlist available at https://trainsteady.com  
 
-**Contact:** hello@trainsteady.com  
+**Contact:** hello@trainsteady.com
