@@ -1,0 +1,47 @@
+# Steady
+
+> Train with confidence for your next big ride.
+
+Steady is a cycling coaching app that connects your event's specific demands with your current physiology and focuses your training on closing the gap. Launching March 2026.
+
+## How it works
+
+1. Connect your Strava account. Steady pulls your last 90 days of ride history, including power data.
+2. Complete a short intake: your physiology (weight, HR zones, FTP), your event goal (name, date, distance, elevation, target duration), and your weekly availability.
+3. Steady analyzes your event's demands, computes your current fitness from ride data, identifies the gaps, and generates a structured 4-week training plan in under 30 seconds.
+4. Ride the plan. After each ride, get a context-aware coach review that knows what was planned, what you did, and how it connects to your event goals.
+5. Regenerate as you progress. Each cycle uses fresh ride data and recalculated gaps, so the plan adapts to your actual progression.
+
+## What you see in the app
+
+- **Dashboard** with today's workout, power targets, interval structure, and a "Why this workout" explanation connecting it to your event-specific gaps.
+- **Training plan** showing 4 weeks of structured workouts (3 loading + 1 recovery), with daily power targets, coach tips, and completion tracking.
+- **Progress page** tracking your gaps across training dimensions (durability, aerobic base, threshold capacity, VO2 ceiling) with current vs. target values and trend lines.
+- **Activities page** with all synced Strava rides, classified by type, with on-demand streaming coach reviews.
+- **Coach reviews** for every ride: context-aware feedback covering execution quality, pacing, and what to focus on next. Weekly reviews cover compliance and adjustments.
+
+## What makes Steady different
+
+- **Event-specific, not generic.** Your plan is derived from the terrain, duration, and intensity demands of your actual event. A mountain gran fondo and a flat century get fundamentally different plans.
+- **Gap-based progress tracking.** Steady quantifies the gap between where you are and where you need to be on each dimension your event demands (e.g., 60-min power, long ride capacity, aerobic decoupling). You watch those gaps close week by week.
+- **Training science first.** Periodization (base, build, specific, peak), progressive overload, specificity, and recovery cycles. Intensity anchored to aerobic threshold (LT1), not FTP.
+- **Deterministic pipeline.** The coaching pipeline is ~85% deterministic. The LLM doesn't decide what to train; a structured pipeline handles demand analysis, athlete state, phase selection, gap analysis, and training architecture. The LLM fills in workout details within tight constraints.
+- **Coaching WHY.** Every workout comes with an explanation of why it exists and how it connects to your event goals. Not just "do this", but "this builds threshold capacity for your big climbs."
+
+## Who it's for
+
+Cyclists preparing for a specific endurance event: gran fondos, sportives, cycling trips with serious climbing, flat centuries, and long-distance rides. Riders who prefer steady progress over hero efforts, want to understand the WHY behind their training, and can't afford wasted sessions.
+
+## Requirements
+
+- Power meter (pedal, crank, or hub-based)
+- Strava account
+
+## Pricing
+
+Early access with limited spots. Waitlist open at trainsteady.com.
+
+## Links
+
+- Website: https://trainsteady.com
+- Contact: hello@trainsteady.com
