@@ -64,12 +64,7 @@ The system models the physiological requirements of the target event based on du
 Current fitness is computed from recent power-duration data and ride history.
 
 ### 3. Gap Identification  
-Steady quantifies the difference between current capacity and event-required capacity across dimensions such as:
-- Aerobic base
-- Durability
-- Threshold capacity
-- VO2 ceiling
-- Long-duration fatigue resistance
+Steady quantifies the difference between current capacity and event-required capacity across dimensions such as aerobic base, durability, threshold capacity, VO2 ceiling, and long-duration fatigue resistance. Where most apps tell you your FTP went up, Steady tells you whether you're actually ready for your event: "your durability is at 59% of where it needs to be, your aerobic base needs 10 more watts, and your VO2max is already event-ready." Gaps drive training priority. Strengths are surfaced as confidence builders.
 
 ### 4. Plan Generation  
 A structured 4-week mesocycle is generated:
@@ -130,7 +125,9 @@ The LLM does not determine training architecture.
 
 - Event-specific training derived from actual event demands
 - Two-anchor intensity model (LT1 + FTP) instead of FTP-only zone compression
-- Gap-based progress tracking instead of generic FTP improvement  
+- Gap-based progress tracking: not "your FTP went up" but "you're 87% ready for your event and here's exactly what's missing"
+- Strengths surfaced alongside gaps so athletes know what's working, not just what needs work
+- Objective-aware coaching: same event, different goals ("win M50" vs "finish without bonking") produce different training plans
 - Focus on durability and long-duration performance  
 - Deterministic training architecture  
 - Explicit explanation of training rationale  
