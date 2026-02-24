@@ -136,8 +136,14 @@
 
   <!-- Hero Section -->
   <section class="relative pt-[76px] overflow-hidden">
-    <img src="images/hero-bg-cyclist-mobile.png" alt="" class="lg:hidden absolute w-full pointer-events-none" style="top: 60px; left: 0;" />
-    <img src="images/hero-bg-cyclist.png" alt="" class="hidden lg:block absolute inset-0 w-full h-full object-cover object-[center_30%] pointer-events-none opacity-[0.15]" />
+    <picture class="lg:hidden absolute w-full pointer-events-none" style="top: 60px; left: 0;">
+      <source srcset="images/hero-bg-cyclist-mobile.webp" type="image/webp" />
+      <img src="images/hero-bg-cyclist-mobile.png" alt="" class="w-full" />
+    </picture>
+    <picture class="hidden lg:block absolute inset-0 w-full h-full pointer-events-none opacity-[0.15]">
+      <source srcset="images/hero-bg-cyclist.webp" type="image/webp" />
+      <img src="images/hero-bg-cyclist.png" alt="" class="w-full h-full object-cover object-[center_30%]" />
+    </picture>
     <div class="relative max-w-[1216px] mx-auto px-4 flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-12 pt-[64px] lg:pt-[50px]">
       <div class="flex-1 flex flex-col gap-4 lg:gap-6 max-w-[566px]">
         <h1 class="text-[36px] md:text-[48px] lg:text-[52px] font-bold leading-[1.18]">
@@ -155,7 +161,10 @@
         </div>
       </div>
       <div class="flex-1 max-w-[576px] w-full">
-        <img src="images/hero-phones.png" alt="Steady app showing a structured cycling training plan with power targets and gap tracking" class="w-full h-auto max-h-[370px] lg:max-h-none object-contain" />
+        <picture>
+          <source srcset="images/hero-phones.webp" type="image/webp" />
+          <img src="images/hero-phones.png" alt="Steady app showing a structured cycling training plan with power targets and gap tracking" class="w-full h-auto max-h-[370px] lg:max-h-none object-contain" />
+        </picture>
       </div>
     </div>
   </section>
@@ -176,7 +185,10 @@
 
       <!-- Feature 1: Event Demands -->
       <div class="flex flex-col lg:flex-row items-center gap-3 lg:gap-16">
-        <img src="images/feature-event-demands.png" alt="Steady analyzing the physiological demands of a gran fondo including climbing power and duration targets" class="w-full lg:w-[608px] rounded-lg" />
+        <picture>
+          <source srcset="images/feature-event-demands.webp" type="image/webp" />
+          <img src="images/feature-event-demands.png" alt="Steady analyzing the physiological demands of a gran fondo including climbing power and duration targets" class="w-full lg:w-[608px] rounded-lg" />
+        </picture>
         <div class="flex-1 flex flex-col gap-3 lg:gap-6">
           <h3 class="text-[#141824] text-[24px] lg:text-[30px] font-bold leading-tight">Your Event Has Specific Demands</h3>
           <p class="text-[#3B435B] text-base leading-relaxed">
@@ -190,7 +202,10 @@
 
       <!-- Feature 2: The Gap -->
       <div class="flex flex-col lg:flex-row-reverse items-center gap-3 lg:gap-16">
-        <img src="images/feature-gap.png" alt="Gap analysis showing current vs target values for 60-minute power and long ride capacity" class="w-full lg:w-[608px] rounded-lg" />
+        <picture>
+          <source srcset="images/feature-gap.webp" type="image/webp" />
+          <img src="images/feature-gap.png" alt="Gap analysis showing current vs target values for 60-minute power and long ride capacity" class="w-full lg:w-[608px] rounded-lg" />
+        </picture>
         <div class="flex-1 flex flex-col gap-3 lg:gap-6">
           <h3 class="text-[#141824] text-[24px] lg:text-[30px] font-bold leading-tight">We Measure The Gap</h3>
           <p class="text-[#3B435B] text-base leading-relaxed">
@@ -222,7 +237,10 @@
 
       <!-- Feature 3: Progress -->
       <div class="flex flex-col lg:flex-row items-center gap-3 lg:gap-16">
-        <img src="images/feature-progress.png" alt="Progress chart showing fitness gaps closing week by week toward event targets" class="w-full lg:w-[600px]" />
+        <picture>
+          <source srcset="images/feature-progress.webp" type="image/webp" />
+          <img src="images/feature-progress.png" alt="Progress chart showing fitness gaps closing week by week toward event targets" class="w-full lg:w-[600px]" />
+        </picture>
         <div class="flex-1 flex flex-col gap-3 lg:gap-6">
           <h3 class="text-[#141824] text-[24px] lg:text-[30px] font-bold leading-tight">You Watch The Gap Close</h3>
           <p class="text-[#3B435B] text-base leading-relaxed">
@@ -258,7 +276,10 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-9">
         <!-- Card 1 -->
         <div class="bg-white border border-[#F1F5F9] rounded-3xl px-4 pt-2 pb-9 lg:px-9 lg:pb-9 flex flex-col items-center gap-6">
-          <img src="images/card-direction.png" alt="Workout screen with power targets and an explanation of why this session connects to event goals" class="w-full max-w-[500px] h-auto" />
+          <picture>
+            <source srcset="images/card-direction.webp" type="image/webp" />
+            <img src="images/card-direction.png" alt="Workout screen with power targets and an explanation of why this session connects to event goals" class="w-full max-w-[500px] h-auto" />
+          </picture>
           <div class="flex flex-col gap-3 px-2">
             <h3 class="text-[#141824] text-xl font-bold">No more junk miles</h3>
             <p class="text-[#3B435B] text-base leading-relaxed">Every workout connects to a specific capability your event demands. You always know what you're training and why.</p>
@@ -266,7 +287,10 @@
         </div>
         <!-- Card 2 -->
         <div class="bg-white border border-[#F1F5F9] rounded-3xl px-4 pt-2 pb-9 lg:px-9 lg:pb-9 flex flex-col items-center justify-end gap-6">
-          <img src="images/card-coaching.png" alt="Coach review explaining the purpose behind a threshold interval session for climbing preparation" class="w-full max-w-[550px] h-auto" />
+          <picture>
+            <source srcset="images/card-coaching.webp" type="image/webp" />
+            <img src="images/card-coaching.png" alt="Coach review explaining the purpose behind a threshold interval session for climbing preparation" class="w-full max-w-[550px] h-auto" />
+          </picture>
           <div class="flex flex-col gap-3 px-2">
             <h3 class="text-[#141824] text-xl font-bold">The WHY behind every session</h3>
             <p class="text-[#3B435B] text-base leading-relaxed">Not just "do this workout" but why: "This builds threshold capacity for your big climbs. You're targeting 4&times;8min to extend time at power."</p>
@@ -274,7 +298,10 @@
         </div>
         <!-- Card 3 -->
         <div class="bg-white border border-[#F1F5F9] rounded-3xl px-4 pt-2 pb-9 lg:px-9 lg:pb-9 flex flex-col items-center gap-6">
-          <img src="images/card-adaptive.png" alt="Training plan adapting after a missed session with updated workouts and coach explanation" class="w-full max-w-[500px] h-auto" />
+          <picture>
+            <source srcset="images/card-adaptive.webp" type="image/webp" />
+            <img src="images/card-adaptive.png" alt="Training plan adapting after a missed session with updated workouts and coach explanation" class="w-full max-w-[500px] h-auto" />
+          </picture>
           <div class="flex flex-col gap-3 px-2">
             <h3 class="text-[#141824] text-xl font-bold">A plan that adapts to your life</h3>
             <p class="text-[#3B435B] text-base leading-relaxed">When life disrupts training, the plan adjusts — and tells you why. You always know where you stand and what changed.</p>
@@ -282,7 +309,10 @@
         </div>
         <!-- Card 4 -->
         <div class="bg-white border border-[#F1F5F9] rounded-3xl px-4 pt-2 pb-9 lg:px-9 lg:pb-9 flex flex-col items-center gap-6">
-          <img src="images/card-progress.png" alt="Weekly progress dashboard tracking aerobic base, threshold capacity, and durability gaps" class="w-full max-w-[500px] h-auto" />
+          <picture>
+            <source srcset="images/card-progress.webp" type="image/webp" />
+            <img src="images/card-progress.png" alt="Weekly progress dashboard tracking aerobic base, threshold capacity, and durability gaps" class="w-full max-w-[500px] h-auto" />
+          </picture>
           <div class="flex flex-col gap-3 px-2">
             <h3 class="text-[#141824] text-xl font-bold">Progress you can trust</h3>
             <p class="text-[#3B435B] text-base leading-relaxed">See your progress week by week on the metrics that matter for your event. No more guessing — you know if you're on track.</p>
