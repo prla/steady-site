@@ -120,7 +120,7 @@
     .faq-chevron.open { transform: rotate(180deg); }
 
     /* Chat demo */
-    .chat-demo { background: #F7F8FC; border: 1px solid #ECEEF8; border-radius: 16px; width: 100%; max-width: 350px; height: 500px; display: flex; flex-direction: column; overflow: hidden; }
+    .chat-demo { background: #F7F8FC; border: 1px solid #ECEEF8; border-radius: 16px; width: 100%; max-width: 350px; height: 500px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 8px 40px rgba(38, 99, 235, 0.12), 0 2px 12px rgba(0,0,0,0.08); }
     .cd-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid #ECEEF8; flex-shrink: 0; }
     .cd-avatar-wrap { position: relative; flex-shrink: 0; }
     .cd-avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #2663EB 0%, #7C3AED 99%); display: flex; align-items: center; justify-content: center; }
@@ -307,37 +307,62 @@
   </section>
 
   <!-- What You Get Section -->
-  <section id="features" class="py-16 lg:py-20 px-4 lg:px-20" style="background: linear-gradient(90deg, rgba(240,249,255,1) 0%, rgba(245,243,255,1) 100%);">
-    <div class="max-w-[1280px] mx-auto flex flex-col gap-7 lg:gap-14">
-      <div class="flex flex-col gap-2">
-        <h2 class="text-[#141824] text-[30px] lg:text-4xl font-bold leading-[1.18] text-center">What You Get With Steady</h2>
-        <p class="text-[#3B435B] text-base text-center">Everything you need to stop wondering and start knowing.</p>
+  <section id="features" class="py-16 lg:py-20 px-4 lg:px-20" style="background: #f6f7ff;">
+    <div class="max-w-[1280px] mx-auto flex flex-col gap-4 lg:gap-6">
+      <!-- Header -->
+      <div class="flex flex-col gap-2 text-center mb-8 lg:mb-12">
+        <h2 class="text-[#0e1127] text-[32px] lg:text-[44px] font-extrabold leading-tight">What You Get With Steady</h2>
+        <p class="text-[#3b435b] text-lg lg:text-xl">Everything you need to stop wondering and start knowing.</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-9">
-        <!-- Card 1 -->
-        <div class="bg-white border border-[#F1F5F9] rounded-3xl px-4 pt-2 pb-9 lg:px-9 lg:pb-9 flex flex-col items-center gap-6">
+
+      <!-- Row 1: No more junk miles — image left, numbered steps right -->
+      <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-6 pb-10 lg:pb-14 border-b border-[#eef0ff]">
+        <!-- Image -->
+        <div class="w-full lg:w-[61%] lg:max-w-[683px] shrink-0">
           <picture>
-            <source srcset="images/card-direction.webp" type="image/webp" />
-            <img src="images/card-direction.png" alt="Workout screen with power targets and an explanation of why this session connects to event goals" class="w-full max-w-[500px] h-auto" loading="lazy" width="1000" height="1000" />
+            <img src="images/card-whatYouGet-1.png" alt="Workout screen with power targets and an explanation of why this session connects to event goals" class="w-full h-auto" loading="lazy" />
           </picture>
-          <div class="flex flex-col gap-3 px-2">
-            <h3 class="text-[#141824] text-xl font-bold">No more junk miles</h3>
-            <p class="text-[#3B435B] text-base leading-relaxed">Every workout connects to a specific capability your event demands. You always know what you're training and why.</p>
+        </div>
+        <!-- Text -->
+        <div class="flex-1 flex flex-col gap-6 max-w-[537px]">
+          <h3 class="text-[#0e1127] text-[28px] lg:text-[36px] font-extrabold" style="line-height: 48px;">No more junk miles</h3>
+          <div class="flex flex-col divide-y divide-[#eef0ff]">
+            <!-- Step 1 (active) -->
+            <div class="flex gap-5 items-start pt-7 pb-px">
+              <div class="w-10 h-10 rounded-[12px] shrink-0 flex items-center justify-center text-white font-bold text-sm" style="background: linear-gradient(135deg, #4361EE 0%, #7B4FE0 100%); box-shadow: 0 4px 14px rgba(67,97,238,0.35);">1</div>
+              <div class="flex flex-col gap-2">
+                <p class="text-[#3d4475] text-[18px] font-bold leading-tight">Get clear direction</p>
+                <p class="text-[#3b435b] text-base leading-relaxed">Every workout connects to a specific capability your goal demands. You know exactly why you're doing what you're doing.</p>
+              </div>
+            </div>
+            <!-- Step 2 (inactive) -->
+            <div class="flex gap-5 items-start pt-7 pb-px">
+              <div class="w-10 h-10 rounded-[12px] shrink-0 flex items-center justify-center text-[#8892c8] font-bold text-sm border-[1.5px] border-[#c0c8f0]">2</div>
+              <div class="flex flex-col gap-2">
+                <p class="text-[#3d4475] text-[18px] font-bold leading-tight">Understand the WHY behind each workout</p>
+                <p class="text-[#3b435b] text-base leading-relaxed">Not just "do this workout" but why: "This builds threshold capacity for your big climbs. You're targeting 4&times;8min to extend time at power."</p>
+              </div>
+            </div>
           </div>
         </div>
-        <!-- Card 2 -->
-        <div class="bg-white border border-[#F1F5F9] rounded-3xl px-4 pt-2 pb-9 lg:px-9 lg:pb-9 flex flex-col items-center justify-end gap-6">
-          <picture>
-            <source srcset="images/card-coaching.webp" type="image/webp" />
-            <img src="images/card-coaching.png" alt="Coach review explaining the purpose behind a threshold interval session for climbing preparation" class="w-full max-w-[550px] h-auto" loading="lazy" width="1100" height="946" />
-          </picture>
-          <div class="flex flex-col gap-3 px-2">
-            <h3 class="text-[#141824] text-xl font-bold">The WHY behind every session</h3>
-            <p class="text-[#3B435B] text-base leading-relaxed">Not just "do this workout" but why: "This builds threshold capacity for your big climbs. You're targeting 4&times;8min to extend time at power."</p>
+      </div>
+
+      <!-- Row 2: Your coach adapts — text + pills left, chat animation right -->
+      <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-14 py-10 lg:py-14 border-b border-[#eef0ff]">
+        <!-- Text -->
+        <div class="flex-1 flex flex-col gap-6 order-2 lg:order-1 max-w-[537px]">
+          <h3 class="text-[#0e1127] text-[28px] lg:text-[36px] font-extrabold leading-tight">Your coach adapts to your life</h3>
+          <p class="text-[#3d4475] text-base leading-relaxed">When life disrupts training, the plan adjusts — and tells you why. You always know where you stand and what changed.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-4 py-[9px] rounded-full text-[#4361ee] text-[13px] font-medium" style="background: #eef0ff; border: 1px solid #d0d8ff;">I'm going on vacation</span>
+            <span class="px-4 py-[9px] rounded-full text-[#4361ee] text-[13px] font-medium" style="background: #eef0ff; border: 1px solid #d0d8ff;">I wanna do a group ride Sunday</span>
+            <span class="px-4 py-[9px] rounded-full text-[#4361ee] text-[13px] font-medium" style="background: #eef0ff; border: 1px solid #d0d8ff;">Explain today's workout</span>
+            <span class="px-4 py-[9px] rounded-full text-[#4361ee] text-[13px] font-medium" style="background: #eef0ff; border: 1px solid #d0d8ff;">I'm sick today</span>
+            <span class="px-4 py-[9px] rounded-full text-[#4361ee] text-[13px] font-medium" style="background: #eef0ff; border: 1px solid #d0d8ff;">How should I prep for the long ride?</span>
           </div>
         </div>
-        <!-- Card 3 -->
-        <div class="bg-white border border-[#F1F5F9] rounded-3xl px-4 pt-6 pb-9 lg:px-9 lg:pb-9 flex flex-col items-center gap-6">
+        <!-- Chat animation -->
+        <div class="w-full lg:flex-1 flex justify-center order-1 lg:order-2">
           <div class="chat-demo" id="chatDemo">
             <div class="cd-header">
               <div style="display:flex;align-items:center;gap:12px;">
@@ -429,21 +454,22 @@
               </div>
             </div>
           </div>
-          <div class="flex flex-col gap-3 px-2">
-            <h3 class="text-[#141824] text-xl font-bold">Your coach adapts to your life</h3>
-            <p class="text-[#3B435B] text-base leading-relaxed">When life disrupts training, the plan adjusts — and tells you why. You always know where you stand and what changed.</p>
-          </div>
         </div>
-        <!-- Card 4 -->
-        <div class="bg-white border border-[#F1F5F9] rounded-3xl px-4 pt-2 pb-9 lg:px-9 lg:pb-9 flex flex-col items-center gap-6">
+      </div>
+
+      <!-- Row 3: Progress you can see — image left, text right -->
+      <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-14 pt-10 lg:pt-14">
+        <!-- Image -->
+        <div class="w-full lg:w-[540px] shrink-0">
           <picture>
             <source srcset="images/card-progress.webp" type="image/webp" />
-            <img src="images/card-progress.png" alt="Weekly progress dashboard tracking aerobic base, threshold capacity, and durability gaps" class="w-full max-w-[500px] h-auto" loading="lazy" width="1000" height="1000" />
+            <img src="images/card-progress.png" alt="Progress chart showing fitness gaps closing week by week toward event targets" class="w-full h-auto" loading="lazy" width="1200" height="916" />
           </picture>
-          <div class="flex flex-col gap-3 px-2">
-            <h3 class="text-[#141824] text-xl font-bold">Progress you can trust</h3>
-            <p class="text-[#3B435B] text-base leading-relaxed">See your progress week by week on the metrics that matter for your event. No more guessing — you know if you're on track.</p>
-          </div>
+        </div>
+        <!-- Text -->
+        <div class="flex-1 flex flex-col gap-6 max-w-[537px]">
+          <h3 class="text-[#0e1127] text-[28px] lg:text-[36px] font-extrabold leading-tight">Progress you can see</h3>
+          <p class="text-[#3d4475] text-base leading-relaxed">See your progress week by week on the metrics that matter for your event. No more guessing — you know if you're on track.</p>
         </div>
       </div>
     </div>
@@ -741,22 +767,22 @@
       function run() {
         reset();
         // Step 1 — User msg 1
-        timers.push(setTimeout(function() { show('cd-m1'); }, 800));
+        timers.push(setTimeout(function() { show('cd-m1'); }, 400));
         // Step 2 — Typing 1, then Coach msg 1
-        timers.push(setTimeout(function() { show('cd-t1'); }, 1800));
-        timers.push(setTimeout(function() { hide('cd-t1'); show('cd-m2'); }, 3300));
+        timers.push(setTimeout(function() { show('cd-t1'); }, 1000));
+        timers.push(setTimeout(function() { hide('cd-t1'); show('cd-m2'); }, 1800));
         // Step 3 — User msg 2 (after reading long coach reply)
-        timers.push(setTimeout(function() { show('cd-m3'); }, 7200));
+        timers.push(setTimeout(function() { show('cd-m3'); }, 3600));
         // Step 4 — Typing 2, then Coach msg 2
-        timers.push(setTimeout(function() { show('cd-t2'); }, 8200));
-        timers.push(setTimeout(function() { hide('cd-t2'); show('cd-m4'); }, 9700));
+        timers.push(setTimeout(function() { show('cd-t2'); }, 4200));
+        timers.push(setTimeout(function() { hide('cd-t2'); show('cd-m4'); }, 5000));
         // Step 5 — Action card
-        timers.push(setTimeout(function() { show('cd-action'); }, 10700));
-        // Step 6 — Auto confirm after 2s pause
+        timers.push(setTimeout(function() { show('cd-action'); }, 5600));
+        // Step 6 — Auto confirm after 1.5s pause
         timers.push(setTimeout(function() {
           var el = document.getElementById('cd-confirm');
           if (el) el.classList.add('pressing');
-        }, 12700));
+        }, 7100));
         timers.push(setTimeout(function() {
           var confirm = document.getElementById('cd-confirm');
           if (confirm) confirm.classList.remove('pressing');
@@ -764,12 +790,12 @@
           if (buttons) buttons.style.display = 'none';
           var confirmed = document.getElementById('cd-confirmed');
           if (confirmed) confirmed.style.display = 'flex';
-        }, 13200));
+        }, 7500));
         // Step 7 — Typing 3, then final coach msg
-        timers.push(setTimeout(function() { show('cd-t3'); }, 13700));
-        timers.push(setTimeout(function() { hide('cd-t3'); show('cd-m5'); }, 15200));
-        // Step 8 — Pause 3s, then loop
-        timers.push(setTimeout(run, 18200));
+        timers.push(setTimeout(function() { show('cd-t3'); }, 7900));
+        timers.push(setTimeout(function() { hide('cd-t3'); show('cd-m5'); }, 8700));
+        // Step 8 — Pause 5s, then loop
+        timers.push(setTimeout(run, 13700));
       }
 
       var demo = document.getElementById('chatDemo');
