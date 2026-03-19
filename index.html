@@ -110,6 +110,7 @@
     };
   </script>
   <style>
+    html, body { overflow-x: hidden; }
     html { scroll-behavior: smooth; }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
     .faq-answer.open { max-height: 600px; padding-top: 0; padding-bottom: 16px; }
@@ -500,7 +501,9 @@
 
       .convo-wrap {
         width: 100%;
+        max-width: 100%;
         min-height: 280px;
+        overflow: hidden;
       }
 
       .msg-bubble {
