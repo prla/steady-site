@@ -110,16 +110,8 @@
     };
   </script>
   <style>
-    html {
-      overflow-x: clip;
-      max-width: 100%;
-      scroll-behavior: smooth;
-    }
-    body {
-      overflow-x: clip;
-      max-width: 100%;
-      width: 100%;
-    }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { max-width: 100%; }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
     .faq-answer.open { max-height: 600px; padding-top: 0; padding-bottom: 16px; }
     .faq-chevron { transition: transform 0.3s ease; }
