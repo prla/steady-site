@@ -17,9 +17,6 @@
   <link rel="canonical" href="https://trainsteady.com/" />
   <meta name="theme-color" content="#2663EB" />
   <meta name="robots" content="index, follow" />
-  <link rel="preload" as="image" type="image/webp" href="images/hero-phones.webp" />
-  <link rel="preload" as="image" type="image/webp" href="images/hero-bg-cyclist-mobile.webp" media="(max-width: 1023px)" />
-  <link rel="preload" as="image" type="image/webp" href="images/hero-bg-cyclist.webp" media="(min-width: 1024px)" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -100,8 +97,8 @@
   <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" />
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -115,7 +112,7 @@
   <style>
     html { scroll-behavior: smooth; }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
-    .faq-answer.open { max-height: 200px; padding-top: 0; padding-bottom: 16px; }
+    .faq-answer.open { max-height: 600px; padding-top: 0; padding-bottom: 16px; }
     .faq-chevron { transition: transform 0.3s ease; }
     .faq-chevron.open { transform: rotate(180deg); }
 
@@ -154,6 +151,363 @@
     .cd-anim { display: none; }
     .cd-anim.cd-visible { display: flex; flex-direction: column; animation: cd-fadein 0.3s ease forwards; }
     @keyframes cd-fadein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Coaching loop ── */
+    @keyframes cl-tap-ring {
+      0%   { opacity: 0;   transform: translate(-50%, -50%) scale(0.4); }
+      15%  { opacity: 0.8; transform: translate(-50%, -50%) scale(1);   }
+      50%  { opacity: 0.6; transform: translate(-50%, -50%) scale(0.88);}
+      80%  { opacity: 0.3; transform: translate(-50%, -50%) scale(1.05);}
+      100% { opacity: 0;   transform: translate(-50%, -50%) scale(1.05);}
+    }
+    .cl-tap-animate {
+      animation: cl-tap-ring 0.9s ease forwards;
+    }
+
+    /* ── Coaching loop mobile ── */
+    @media (max-width: 768px) {
+      #cl-area { height: auto !important; }
+      #cl-left { display: none !important; }
+      #cl-area > div > div:last-child { width: 100% !important; padding-left: 0 !important; }
+      #cl-area > div > div:last-child > div {
+        height: auto !important;
+        padding: 48px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+      #coaching-loop .cl-mobile-card { display: block !important; }
+    }
+
+    /* ── Hero (new) ── */
+    .hero-section {
+      position: relative;
+      background: #f7f8ff;
+      overflow: hidden;
+    }
+
+    .hero-blob-1 {
+      position: absolute;
+      top: -200px; right: -100px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(123,79,224,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-blob-2 {
+      position: absolute;
+      bottom: -200px; left: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(67,97,238,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 1216px;
+      margin: 0 auto;
+      padding: 0 24px;
+      gap: 100px;
+      min-height: calc(100vh - 76px);
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-left {
+      padding: 80px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #eef0ff;
+      border: 1px solid #d0d8ff;
+      border-radius: 100px;
+      padding: 6px 14px 6px 10px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #4361ee;
+      width: fit-content;
+    }
+
+    .hero-badge-dot {
+      width: 7px; height: 7px;
+      background: linear-gradient(135deg, #4361ee, #7b4fe0);
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    .hero-headline {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -1.5px;
+      color: #0e1127;
+    }
+
+    .hero-body {
+      font-size: 18px;
+      font-weight: 400;
+      color: #3d4475;
+      line-height: 1.7;
+    }
+
+    .hero-pricing {
+      font-size: 14px;
+      font-weight: 400;
+      color: #8892c8;
+    }
+
+    .hero-pricing strong {
+      color: #0e1127;
+      font-weight: 600;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 8px;
+    }
+
+    .hero-cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(163deg, #4361ee 0%, #7b4fe0 100%);
+      box-shadow: 0 4px 24px rgba(67,97,238,0.35);
+      color: white;
+      padding: 15px 48px;
+      border-radius: 12px;
+      font-family: 'Rubik', system-ui, sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+
+    .hero-cta-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .hero-trial-note {
+      font-size: 13px;
+      color: #8892c8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-right {
+      padding: 80px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .goal-tabs {
+      display: flex;
+      align-items: center;
+    }
+
+    .goal-tab {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #8892c8;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.25s;
+      user-select: none;
+      white-space: nowrap;
+      line-height: 30px;
+    }
+
+    .goal-tab::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 16px; right: 16px;
+      height: 2px;
+      background: #7b4fe0;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .goal-tab.active { color: #0e1127; }
+    .goal-tab.active::after { transform: scaleX(1); }
+
+    .convo-wrap {
+      position: relative;
+      min-height: 300px;
+      width: 430px;
+    }
+
+    .convo-screen {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .convo-screen.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .msg-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .msg-row.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .msg-row.user { align-items: flex-end; }
+
+    .msg-sender {
+      font-size: 11px;
+      color: #9499bb;
+      padding: 0 2px;
+    }
+
+    .msg-bubble {
+      padding: 12px 16px;
+      font-size: 15px;
+      line-height: 23px;
+      max-width: 80%;
+      width: fit-content;
+    }
+
+    .msg-row.coach .msg-bubble {
+      background: #fff;
+      color: #515775;
+      border: 1px solid #eceef8;
+      border-radius: 16px 16px 16px 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+
+    .msg-row.user .msg-bubble {
+      background: linear-gradient(90deg, #4761ed, #7452e2);
+      color: #fff;
+      border-radius: 16px 16px 4px 16px;
+    }
+
+    .coach-wrap { position: relative; }
+
+    .typing-indicator {
+      position: absolute;
+      top: 0; left: 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 12px 16px;
+      background: #fff;
+      border: 1px solid #eceef8;
+      border-radius: 16px 16px 16px 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      width: fit-content;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    .typing-indicator.visible { opacity: 1; }
+
+    .typing-dot {
+      width: 6px; height: 6px;
+      background: #c0c4d8;
+      border-radius: 50%;
+      animation: typingBounce 1.2s ease-in-out infinite;
+    }
+
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typingBounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-4px); }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 64px;
+        padding: 0 20px;
+        min-height: auto;
+      }
+
+      .hero-left {
+        padding: 48px 0 0;
+        gap: 14px;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-headline {
+        font-size: 42px;
+        letter-spacing: -1px;
+        line-height: 1.2;
+      }
+
+      .hero-body { font-size: 16px; }
+      .hero-pricing { display: none; }
+
+      .hero-cta-row {
+        flex-direction: column;
+        align-items: stretch;
+        align-self: stretch;
+        gap: 12px;
+      }
+
+      .hero-cta-primary {
+        justify-content: center;
+        padding: 15px 24px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-right {
+        padding: 0 0 48px;
+        gap: 24px;
+      }
+
+      .hero-trial-note { justify-content: center; }
+
+      .goal-tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        justify-content: center;
+      }
+      .goal-tabs::-webkit-scrollbar { display: none; }
+
+      .goal-tab {
+        font-size: 12px;
+        padding: 8px 12px;
+      }
+
+      .convo-wrap {
+        width: 100%;
+        min-height: 280px;
+      }
+
+      .msg-bubble {
+        font-size: 14px;
+        line-height: 21px;
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen bg-white text-[#141824] font-sans antialiased">
@@ -161,11 +515,11 @@
   <!-- Header -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm">
     <div class="max-w-[1216px] mx-auto flex items-center justify-between px-4 py-4">
-      <img src="images/logo.svg" alt="Steady" class="h-11" />
+      <img src="images/LOGO - horizontal.svg" alt="Steady" width="114" height="36" />
       <nav class="hidden md:flex items-center gap-8">
-        <a href="#how-it-works" class="text-[#3B435B] text-base hover:text-[#141824] transition-colors">How it Works</a>
-        <a href="#features" class="text-[#3B435B] text-base hover:text-[#141824] transition-colors">Features</a>
-        <a href="#who-its-for" class="text-[#3B435B] text-base hover:text-[#141824] transition-colors">Who's it For</a>
+        <a href="#coaching-loop" class="text-[#3B435B] text-base hover:text-[#141824] transition-colors">How it Works</a>
+        <a href="#how-it-works" class="text-[#3B435B] text-base hover:text-[#141824] transition-colors">Methodology</a>
+        <a href="#pricing" class="text-[#3B435B] text-base hover:text-[#141824] transition-colors">Pricing</a>
         <a href="#faq" class="text-[#3B435B] text-base hover:text-[#141824] transition-colors">FAQ</a>
       </nav>
       <a href="#footer-cta" class="text-white text-base font-medium px-6 py-2 rounded-[12px] hover:opacity-90 transition-opacity" style="background: linear-gradient(168.69deg, #4361EE 0%, #7B4FE0 100%); box-shadow: 0 4px 24px rgba(67,97,235,0.35);">
@@ -175,156 +529,530 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="relative pt-[76px] overflow-hidden">
-    <picture class="lg:hidden absolute w-full pointer-events-none" style="top: 60px; left: 0;">
-      <source srcset="images/hero-bg-cyclist-mobile.webp" type="image/webp" />
-      <img src="images/hero-bg-cyclist-mobile.png" alt="" class="w-full" width="804" height="1336" />
-    </picture>
-    <picture class="hidden lg:block absolute inset-0 w-full h-full pointer-events-none opacity-[0.15]">
-      <source srcset="images/hero-bg-cyclist.webp" type="image/webp" />
-      <img src="images/hero-bg-cyclist.png" alt="" class="w-full h-full object-cover object-[center_30%]" width="1536" height="1024" />
-    </picture>
-    <div class="relative max-w-[1216px] mx-auto px-4 flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-12 pt-[64px] lg:pt-[50px]">
-      <div class="flex-1 flex flex-col gap-4 lg:gap-6 max-w-[566px]">
-        <h1 class="text-[#141824] text-[36px] md:text-[48px] lg:text-[60px] font-extrabold leading-[1.12]">
-          Train with confidence for <span class="bg-clip-text text-transparent" style="background-image: linear-gradient(168deg, #4361EE 0%, #7B4FE0 100%);">your next big ride.</span>
-        </h1>
-        <p class="text-[#141824] text-base lg:text-lg leading-relaxed text-left">
-          Steady connects your event's requirements with your current physiology — and focuses your training on closing the gap.
+  <section class="hero-section pt-[76px]">
+    <div class="hero-blob-1"></div>
+    <div class="hero-blob-2"></div>
+
+    <div class="hero">
+
+      <!-- LEFT -->
+      <div class="hero-left">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Powered by training science + AI
+        </div>
+
+        <h1 class="hero-headline">Train for your goal. Get coached every ride.</h1>
+
+        <p class="hero-body">
+          Steady reviews every ride, adapts every week, and keeps you on track for your goal — the way a human coach would, at a fraction of the cost.
         </p>
-        <a href="#footer-cta" class="text-white text-lg font-semibold px-8 h-[50px] flex items-center justify-center rounded-[12px] w-full lg:w-[250px] text-center hover:opacity-90 transition-opacity" style="background: linear-gradient(168.69deg, #4361EE 0%, #7B4FE0 100%); box-shadow: 0 4px 24px rgba(67,97,235,0.35);">
-          Join Waitlist
-        </a>
-        <div class="flex items-center gap-2 text-[#3B435B] text-sm">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#3B435B" stroke-width="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#3B435B" stroke-width="2" stroke-linecap="round"/></svg>
-          <span>Launching March 2026</span>
+
+
+
+        <div class="hero-cta-row">
+          <a href="#footer-cta" class="hero-cta-primary">Join the waitlist</a>
+        </div>
+
+        <div class="hero-trial-note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8892c8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          No credit card required · 14-day free trial
         </div>
       </div>
-      <div class="flex-1 max-w-[576px] w-full">
-        <picture>
-          <source srcset="images/hero-phones.webp" type="image/webp" />
-          <img src="images/hero-phones.png" alt="Steady app showing a structured cycling training plan with power targets and gap tracking" class="w-full h-auto max-h-[370px] lg:max-h-none object-contain" width="1152" height="1060" />
-        </picture>
+
+      <!-- RIGHT -->
+      <div class="hero-right">
+        <div class="goal-tabs">
+          <div class="goal-tab active" data-tab="0">⛰️ Gran fondo</div>
+          <div class="goal-tab" data-tab="1">🎯 Performance target</div>
+          <div class="goal-tab" data-tab="2">🗺️ Multi-day trip</div>
+        </div>
+
+        <div class="convo-wrap">
+
+          <!-- Screen 0: Gran fondo -->
+          <div class="convo-screen active" id="screen-0">
+            <div class="msg-row coach">
+              <div class="msg-bubble">Hi Alex, what are you training for?</div>
+              <div class="msg-sender">Steady</div>
+            </div>
+            <div class="msg-row user">
+              <div class="msg-bubble">Serra da Estrela in June — 174km, 4600m climbing.</div>
+              <div class="msg-sender">You</div>
+            </div>
+            <div class="coach-wrap">
+              <div class="typing-indicator" id="typing-0">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+              </div>
+              <div class="msg-row coach">
+                <div class="msg-bubble">Your Strava data puts you at 2.8 W/kg with a longest ride of 3h 20m. The climbs will need sustained efforts above threshold for 5+ hours. You have 13 weeks — enough. I'll start with aerobic endurance and build into climbing-specific work from week 5.</div>
+                <div class="msg-sender">Steady</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 1: Performance -->
+          <div class="convo-screen" id="screen-1">
+            <div class="msg-row coach">
+              <div class="msg-bubble">Hi Alex, what are you training for?</div>
+              <div class="msg-sender">Steady</div>
+            </div>
+            <div class="msg-row user">
+              <div class="msg-bubble">Move from Cat C to Cat B on Zwift.</div>
+              <div class="msg-sender">You</div>
+            </div>
+            <div class="coach-wrap">
+              <div class="typing-indicator" id="typing-1">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+              </div>
+              <div class="msg-row coach">
+                <div class="msg-bubble">Cat B requires around 3.2 W/kg. You're at 2.9 — a gap of 0.3 W/kg. With your current training load, 18–20 weeks of focused sweet spot and threshold work gets you there. Realistic by October.</div>
+                <div class="msg-sender">Steady</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 2: Multi-day trip -->
+          <div class="convo-screen" id="screen-2">
+            <div class="msg-row coach">
+              <div class="msg-bubble">Hi Alex, what are you training for?</div>
+              <div class="msg-sender">Steady</div>
+            </div>
+            <div class="msg-row user">
+              <div class="msg-bubble">5-day cycling trip to Mallorca in May.</div>
+              <div class="msg-sender">You</div>
+            </div>
+            <div class="coach-wrap">
+              <div class="typing-indicator" id="typing-2">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+              </div>
+              <div class="msg-row coach">
+                <div class="msg-bubble">Classic Mallorca routes average 70km and 1,800m per day. Your longest recent ride is 3h — we'll build to 5h+ over 8 weeks, with back-to-back long rides in weeks 6 and 7 to simulate the daily load.</div>
+                <div class="msg-sender">Steady</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
+
     </div>
   </section>
 
-  <!-- Methodology Section -->
-  <section id="how-it-works" class="bg-white py-16 lg:py-20 px-4 lg:px-20">
-    <div class="max-w-[1280px] mx-auto flex flex-col gap-14 lg:gap-20">
-      <!-- Header -->
-      <div class="text-center flex flex-col gap-3 items-center">
-        <span class="text-[#2663EB] text-sm font-medium tracking-wider uppercase">THE METHODOLOGY</span>
-        <h2 class="text-[#0e1127] text-[32px] lg:text-[44px] font-extrabold leading-tight">
-          Built on Training Science,<br/>Not LLM Vibes
-        </h2>
-        <p class="text-[#3B435B] text-base leading-relaxed max-w-[640px]">
-          Most apps anchor everything to FTP and generate workouts from a black box. Steady is built on a structured training methodology — intensity anchored to your aerobic threshold, plans built on progressive overload and periodization — with every decision traceable, not random.
-        </p>
-      </div>
+  <!-- Coaching Loop Section -->
+  <section id="coaching-loop" style="background: white; position: relative;">
 
-      <!-- Feature 1: Event Demands -->
-      <div class="flex flex-col lg:flex-row items-center gap-3 lg:gap-16">
-        <picture>
-          <source srcset="images/feature-event-demands.webp" type="image/webp" />
-          <img src="images/feature-event-demands.png" alt="Steady analyzing the physiological demands of a gran fondo including climbing power and duration targets" class="w-full lg:w-[608px] rounded-lg" loading="lazy" width="1633" height="1334" />
-        </picture>
-        <div class="flex-1 flex flex-col gap-3 lg:gap-6">
-          <h3 class="text-[#141824] text-[24px] lg:text-[30px] font-bold leading-tight">Your Event Has Specific Demands</h3>
-          <p class="text-[#3B435B] text-base leading-relaxed">
-            A mountain gran fondo isn't the same as a flat century. Each demands specific physiological capabilities that generic plans ignore.
-          </p>
-          <p class="text-[#3B435B] text-base leading-relaxed">
-            Steady analyzes the terrain, duration, and intensity of your specific goal to determine exactly what your body needs to be able to do on event day. Not generic "get fitter" — specific physiological capabilities.
-          </p>
+    <!-- Section header -->
+    <div style="max-width: 1216px; margin: 0 auto; padding: 64px 24px 0;">
+      <h2 style="font-size: clamp(32px, 3.5vw, 44px); font-weight: 800; color: #0e1127; line-height: 1.2; text-align: center;">Steady coaches you every step of the way.</h2>
+    </div>
+
+    <!-- Mobile layout: stacked cards -->
+    <div class="flex flex-col lg:hidden" style="padding: 40px 24px 40px; gap: 48px; max-width: 560px; margin: 0 auto;">
+
+      <!-- Mobile moment 1: workout review -->
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <div style="background: #f7f8ff; border-radius: 20px; padding: 20px; box-shadow: 0 8px 40px rgba(67,97,238,0.1), 0 2px 8px rgba(0,0,0,0.06);">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+            <div style="position: relative; width: 31px; height: 31px; border-radius: 17px; background: #f3f7ff; border: 1.5px solid rgba(38,99,235,0.2); flex-shrink: 0;">
+              <img src="images/coach-avatar-icon.svg" style="position: absolute; left: 6.5px; top: 6.5px; width: 18px; height: 18px;" alt="" />
+              <div style="position: absolute; left: 22.5px; top: 23.25px; width: 8px; height: 8px; border-radius: 99px; background: #4ade80; border: 1.5px solid white;"></div>
+            </div>
+            <div>
+              <p style="font-size: 13px; font-weight: 600; color: #0e1127; line-height: 1;">Your Coach</p>
+              <p style="font-size: 11px; color: #9499bb; margin-top: 2px;">Steady AI · just now</p>
+            </div>
+          </div>
+          <p style="font-size: 15px; color: #515775; line-height: 1.7;">You held your target power through the first two intervals and faded on the third — that's normal at this point in the block. Your aerobic base is responding well. We'll run this session again next week and aim to hold all three clean.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 24px; height: 2px; background: #4361ee;"></div>
+            <span style="font-size: 12px; font-weight: 600; color: #4361ee; letter-spacing: 0.08em; text-transform: uppercase;">01</span>
+          </div>
+          <h3 style="font-size: 28px; font-weight: 800; color: #0e1127; line-height: 1.2; letter-spacing: -0.5px;">After every ride.</h3>
+          <p style="font-size: 16px; color: #3B435B; line-height: 1.7;">Steady reviews what actually happened — not what was planned. Specific, coaching language that tells you where you stand.</p>
         </div>
       </div>
 
-      <!-- Feature 2: The Gap -->
-      <div class="flex flex-col lg:flex-row-reverse items-center gap-3 lg:gap-16">
-        <picture>
-          <source srcset="images/feature-gap.webp" type="image/webp" />
-          <img src="images/feature-gap.png" alt="Gap analysis showing current vs target values for 60-minute power and long ride capacity" class="w-full lg:w-[608px] rounded-lg" loading="lazy" width="1620" height="1154" />
-        </picture>
-        <div class="flex-1 flex flex-col gap-3 lg:gap-6">
-          <h3 class="text-[#141824] text-[24px] lg:text-[30px] font-bold leading-tight">We Measure The Gap</h3>
-          <p class="text-[#3B435B] text-base leading-relaxed">
-            Where are you now on each of those demands? Where do you need to be by event day? We quantify the difference so you know exactly what you're training for.
-          </p>
-          <!-- Gap metrics -->
-          <div class="flex flex-col gap-6 pt-2">
-            <div class="border-l-2 border-[#2663EB] pl-6 flex flex-col gap-1">
-              <span class="text-[#3B435B] text-xs tracking-[0.05em] uppercase">60-min Power</span>
-              <div class="flex items-center gap-3 flex-wrap">
-                <span class="text-[#3B435B] text-lg lg:text-xl">193W</span>
-                <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 7h10m0 0L7 3m4 4L7 11" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span class="text-[#141824] text-lg lg:text-xl font-bold">210W</span>
-                <span class="ml-2 bg-[#FEE3E3] text-[#E93C3C] text-xs font-bold px-2 py-1 rounded">GAP: -17W</span>
-              </div>
+      <!-- Mobile moment 2: weekly review -->
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <div style="background: #f7f8ff; border-radius: 20px; padding: 20px; box-shadow: 0 8px 40px rgba(67,97,238,0.1), 0 2px 8px rgba(0,0,0,0.06);">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+            <div style="position: relative; width: 31px; height: 31px; border-radius: 17px; background: #f3f7ff; border: 1.5px solid rgba(38,99,235,0.2); flex-shrink: 0;">
+              <img src="images/coach-avatar-icon.svg" style="position: absolute; left: 6.5px; top: 6.5px; width: 18px; height: 18px;" alt="" />
+              <div style="position: absolute; left: 22.5px; top: 23.25px; width: 8px; height: 8px; border-radius: 99px; background: #4ade80; border: 1.5px solid white;"></div>
             </div>
-            <div class="border-l-2 border-[#2663EB] pl-6 flex flex-col gap-1">
-              <span class="text-[#3B435B] text-xs tracking-[0.05em] uppercase">Long Ride Capacity</span>
-              <div class="flex items-center gap-3 flex-wrap">
-                <span class="text-[#3B435B] text-lg lg:text-xl">3h 00m</span>
-                <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 7h10m0 0L7 3m4 4L7 11" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span class="text-[#141824] text-lg lg:text-xl font-bold">5h 00m</span>
-                <span class="ml-2 bg-[#FEE3E3] text-[#E93C3C] text-xs font-bold px-2 py-1 rounded">GAP: -2h</span>
-              </div>
+            <div>
+              <p style="font-size: 13px; font-weight: 600; color: #0e1127; line-height: 1;">Your Coach</p>
+              <p style="font-size: 11px; color: #9499bb; margin-top: 2px;">Week of May 9–17</p>
             </div>
           </div>
+          <p style="font-size: 15px; color: #515775; line-height: 1.7;">Four out of five sessions done and the quality was there. Tuesday's sweet spot held 178W across all three intervals with clean HR — your aerobic engine is absorbing this load well. Your sustained power gap is closing.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 24px; height: 2px; background: #4361ee;"></div>
+            <span style="font-size: 12px; font-weight: 600; color: #4361ee; letter-spacing: 0.08em; text-transform: uppercase;">02</span>
+          </div>
+          <h3 style="font-size: 28px; font-weight: 800; color: #0e1127; line-height: 1.2; letter-spacing: -0.5px;">At the end of every week.</h3>
+          <p style="font-size: 16px; color: #3B435B; line-height: 1.7;">Planned vs actual. What worked, what didn't, and what it means for next week.</p>
         </div>
       </div>
 
-      <!-- Feature 3: Progress -->
-      <div class="flex flex-col lg:flex-row items-center gap-3 lg:gap-16">
-        <picture>
-          <source srcset="images/feature-progress.webp" type="image/webp" />
-          <img src="images/feature-progress.png" alt="Progress chart showing fitness gaps closing week by week toward event targets" class="w-full lg:w-[600px]" loading="lazy" width="1200" height="916" />
-        </picture>
-        <div class="flex-1 flex flex-col gap-3 lg:gap-6">
-          <h3 class="text-[#141824] text-[24px] lg:text-[30px] font-bold leading-tight">You Watch The Gap Close</h3>
-          <p class="text-[#3B435B] text-base leading-relaxed">
-            Training isn't linear. Some weeks are breakthroughs, others are consolidation. Steady shows you the trend across weeks so you can trust the process even when a single week feels flat.
-          </p>
-          <!-- Progress cards -->
-          <div class="flex gap-4">
-            <div class="flex-1 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg p-4 flex flex-col items-center gap-1">
-              <span class="text-[#3B435B] text-xs">Week 1</span>
-              <span class="text-[#3B435B] text-base font-bold">193W</span>
+      <!-- Mobile moment 3: block review -->
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <div style="background: #f7f8ff; border-radius: 20px; padding: 24px; box-shadow: 0 8px 40px rgba(67,97,238,0.1), 0 2px 8px rgba(0,0,0,0.06); max-height: 500px; overflow: hidden; position: relative;">
+
+          <!-- Coach avatar header -->
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+            <div style="position: relative; width: 31px; height: 31px; border-radius: 17px; background: #f3f7ff; border: 1.5px solid rgba(38,99,235,0.2); flex-shrink: 0;">
+              <img src="images/coach-avatar-icon.svg" style="position: absolute; left: 6.5px; top: 6.5px; width: 18px; height: 18px;" alt="" />
+              <div style="position: absolute; left: 22.5px; top: 23.25px; width: 8px; height: 8px; border-radius: 99px; background: #4ade80; border: 1.5px solid white;"></div>
             </div>
-            <div class="flex-1 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg p-4 flex flex-col items-center gap-1">
-              <span class="text-[#3B435B] text-xs">Current</span>
-              <span class="text-[#141824] text-base font-bold">204W</span>
-            </div>
-            <div class="flex-1 bg-[#F3F9FF] border border-[#9BCBFF] rounded-lg p-4 flex flex-col items-center gap-1 shadow-sm">
-              <span class="text-[#2663EB] text-xs">Target</span>
-              <span class="text-[#2663EB] text-base font-bold">210W</span>
+            <div>
+              <p style="font-size: 13px; font-weight: 600; color: #0e1127; line-height: 1;">Your Coach</p>
+              <p style="font-size: 11px; color: #9499bb; margin-top: 2px;">Block 1 · May 9 – Jun 6 2026</p>
             </div>
           </div>
+
+          <p style="font-size: 12px; font-weight: 600; color: #9499bb; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px;">Block 1 complete</p>
+
+          <!-- Stats card -->
+          <div style="background: white; border: 1px solid #eceef8; border-radius: 16px; padding: 16px 8px; margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <div style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; min-width: 0;">
+                <div style="position: relative; width: 52px; height: 52px; flex-shrink: 0; overflow: hidden;">
+                  <svg width="52" height="52" viewBox="0 0 52 52" style="transform: rotate(-90deg);">
+                    <circle cx="26" cy="26" r="20" fill="none" stroke="#eceef8" stroke-width="3.5"/>
+                    <circle cx="26" cy="26" r="20" fill="none" stroke="#4ade80" stroke-width="3.5" stroke-dasharray="106.8 125.7" stroke-linecap="round"/>
+                  </svg>
+                  <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 14px; font-weight: 600; color: #9499bb; line-height: 1;">85</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; white-space: nowrap;">
+                  <div><span style="font-size: 16px; font-weight: 600; color: #515775; line-height: 24px;">18</span><span style="font-size: 14px; color: #515775; line-height: 22px;">/25</span></div>
+                  <span style="font-size: 14px; color: #9499bb; line-height: 22px;">RIDES</span>
+                </div>
+              </div>
+              <div style="width: 1px; height: 45px; background: #eceef8; flex-shrink: 0;"></div>
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="font-size: 16px; font-weight: 600; color: #515775; line-height: 24px; white-space: nowrap;">215 W</span>
+                  <span style="font-size: 14px; font-weight: 600; color: #16a34a; background: #f0fdf7; padding: 0 8px; border-radius: 8px; width: 34px; text-align: center; box-sizing: border-box; line-height: 22px;">+5</span>
+                </div>
+                <span style="font-size: 14px; color: #9499bb; line-height: 22px;">FTP</span>
+              </div>
+              <div style="width: 1px; height: 45px; background: #eceef8; flex-shrink: 0;"></div>
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="font-size: 16px; font-weight: 600; color: #515775; line-height: 24px; white-space: nowrap;">2h30</span>
+                  <span style="font-size: 14px; font-weight: 600; color: #f87171; background: #fff1f1; padding: 0 8px; border-radius: 8px; width: 44px; text-align: center; box-sizing: border-box; line-height: 22px;">-20</span>
+                </div>
+                <span style="font-size: 14px; color: #9499bb; line-height: 22px; white-space: nowrap;">LONGEST RIDE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress towards goal -->
+          <p style="font-size: 12px; font-weight: 600; color: #9499bb; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">Progress towards goal</p>
+          <div style="background: white; border: 1px solid #eceef8; border-radius: 16px; padding: 0 16px; margin-bottom: 12px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; padding: 10px 0; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #141824;">Aerobic Base</span>
+              <span style="font-size: 13px; color: #9499bb;">10.2% → <b style="color: #9499bb; font-weight: 600;">8.7%</b></span>
+              <span style="font-size: 11px; font-weight: 600; color: #16a34a; background: #dbf8e6; padding: 2px 8px; border-radius: 6px; white-space: nowrap;">Progressing</span>
+            </div>
+            <div style="height: 1px; background: #eceef8;"></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; padding: 10px 0; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #141824;">Durability</span>
+              <span style="font-size: 13px; color: #9499bb;">14.1% → <b style="color: #9499bb; font-weight: 600;">13.8%</b></span>
+              <span style="font-size: 11px; font-weight: 600; color: #d97706; background: #fef9c3; padding: 2px 8px; border-radius: 6px; white-space: nowrap;">Stalled</span>
+            </div>
+            <div style="height: 1px; background: #eceef8;"></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; padding: 10px 0; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #141824;">Threshold</span>
+              <span style="font-size: 13px; color: #9499bb;">5.1% → <b style="color: #9499bb; font-weight: 600;">3.2%</b></span>
+              <span style="font-size: 11px; font-weight: 600; color: #16a34a; background: #dbf8e6; padding: 2px 8px; border-radius: 6px; white-space: nowrap;">Progressing</span>
+            </div>
+          </div>
+
+          <!-- How did this block go? -->
+          <div style="background: white; border: 1px solid #eceef8; border-radius: 16px; padding: 14px 16px; margin-bottom: 8px;">
+            <p style="font-size: 14px; font-weight: 600; color: #141824; margin-bottom: 6px;">How did this block go?</p>
+            <p style="font-size: 14px; color: #515775; line-height: 1.6;">The first three weeks showed real aerobic development — you hit the 2h30 duration target and kept decoupling under 5% even as ride length increased. But training fell off completely in week 4, which means the adaptations didn't get the consistency needed to stick. Durability is still sitting 6% behind target, and that's the one that matters most for a 160km gran fondo.</p>
+          </div>
+
+          <!-- What did we learn? -->
+          <div style="background: white; border: 1px solid #eceef8; border-radius: 16px; padding: 14px 16px;">
+            <p style="font-size: 14px; font-weight: 600; color: #141824; margin-bottom: 6px;">What did we learn?</p>
+            <p style="font-size: 14px; color: #515775; line-height: 1.6;">Your aerobic system responds quickly when you stay consistent. Week 1: 2h43 at 155W with 4.1% decoupling. Week 3: 2h40 at 141W with 3.2% decoupling — you maintained duration while decoupling improved.</p>
+          </div>
+
+          <!-- Fade overlay -->
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 100px; background: linear-gradient(to bottom, transparent, #f7f8ff); pointer-events: none; border-radius: 0 0 20px 20px;"></div>
+
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 24px; height: 2px; background: #4361ee;"></div>
+            <span style="font-size: 12px; font-weight: 600; color: #4361ee; letter-spacing: 0.08em; text-transform: uppercase;">03</span>
+          </div>
+          <h3 style="font-size: 28px; font-weight: 800; color: #0e1127; line-height: 1.2; letter-spacing: -0.5px;">At the end of each training block.</h3>
+          <p style="font-size: 16px; color: #3B435B; line-height: 1.7;">A full picture of where you stand. Your next 4-week training block is built based on how your training went as well as your goal.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scrollytelling: 300vh (desktop only) -->
+    <div class="hidden lg:block">
+    <div id="cl-area" style="position: relative; height: 300vh;">
+      <div style="max-width: 1216px; margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: flex-start;">
+
+        <!-- LEFT: sticky panel -->
+        <div id="cl-left" style="width: 50%; position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+
+          <!-- Panel 1: workout review (placeholder) -->
+          <div class="cl-panel" id="cl-p1" style="position: absolute; width: 100%; max-width: 420px; opacity: 1; transition: opacity 0.5s ease;">
+            <div style="background: #f7f8ff; border-radius: 20px; padding: 24px; box-shadow: 0 8px 40px rgba(67,97,238,0.1), 0 2px 8px rgba(0,0,0,0.06);">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+                <div style="position: relative; width: 31px; height: 31px; border-radius: 17px; background: #f3f7ff; border: 1.5px solid rgba(38,99,235,0.2); flex-shrink: 0;">
+                  <img src="images/coach-avatar-icon.svg" style="position: absolute; left: 6.5px; top: 6.5px; width: 18px; height: 18px;" alt="" />
+                  <div style="position: absolute; left: 22.5px; top: 23.25px; width: 8px; height: 8px; border-radius: 99px; background: #4ade80; border: 1.5px solid white;"></div>
+                </div>
+                <div>
+                  <p style="font-size: 13px; font-weight: 600; color: #0e1127; line-height: 1;">Your Coach</p>
+                  <p style="font-size: 11px; color: #9499bb; margin-top: 2px;">Steady AI · just now</p>
+                </div>
+              </div>
+              <p style="font-size: 15px; color: #515775; line-height: 1.7;">You held your target power through the first two intervals and faded on the third — that's normal at this point in the block. Your aerobic base is responding well. We'll run this session again next week and aim to hold all three clean.</p>
+            </div>
+          </div>
+
+          <!-- Panel 2: weekly (notification → review loop) -->
+          <div class="cl-panel" id="cl-p2" style="position: absolute; width: 100%; max-width: 420px; opacity: 0; pointer-events: none; transition: opacity 0.5s ease;">
+
+            <!-- Notification card -->
+            <div id="cl-notif" style="transition: opacity 0.45s ease;">
+              <div style="background: #f7f8ff; border-radius: 20px; padding: 24px; box-shadow: 0 8px 40px rgba(67,97,238,0.1), 0 2px 8px rgba(0,0,0,0.06);">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px;">
+                  <p style="font-size: 12px; font-weight: 700; color: #4361ee; letter-spacing: 0.08em; text-transform: uppercase;">Weekly review ready!</p>
+                  <p style="font-size: 12px; color: #9499bb;">Week of May 9–17</p>
+                </div>
+                <div style="display: flex; align-items: flex-end; gap: 8px; margin-bottom: 6px;">
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;"><div style="width: 28px; height: 3px; background: #d0d8ff; border-radius: 2px;"></div><p style="font-size: 10px; color: #9499bb;">M</p></div>
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;"><div style="width: 28px; height: 28px; background: #9BB6FF; border-radius: 6px;"></div><p style="font-size: 10px; color: #9499bb;">T</p></div>
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;"><div style="width: 28px; height: 3px; background: #d0d8ff; border-radius: 2px;"></div><p style="font-size: 10px; color: #9499bb;">W</p></div>
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;"><div style="width: 28px; height: 28px; background: #9BB6FF; border-radius: 6px;"></div><p style="font-size: 10px; color: #9499bb;">T</p></div>
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;"><div style="width: 28px; height: 36px; background: #9BB6FF; border-radius: 6px;"></div><p style="font-size: 10px; color: #9499bb;">F</p></div>
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;"><div style="width: 28px; height: 3px; background: #d0d8ff; border-radius: 2px;"></div><p style="font-size: 10px; color: #9499bb;">S</p></div>
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;"><div style="width: 28px; height: 48px; background: #9BB6FF; border-radius: 6px;"></div><p style="font-size: 10px; color: #9499bb;">S</p></div>
+                </div>
+                <div style="height: 1px; background: #e0e3f5; margin: 18px 0;"></div>
+                <p style="font-size: 15px; color: #0e1127; line-height: 1.6; margin-bottom: 14px;">You finished another week of training! Your coach feedback is ready.</p>
+                <div style="position: relative; display: inline-block;">
+                  <p id="cl-feedback-link" style="font-size: 14px; font-weight: 700; color: #2663eb;">See coach feedback →</p>
+                  <div id="cl-tap" style="position: absolute; top: 50%; left: 60%; width: 44px; height: 44px; border-radius: 50%; background: rgba(38,99,235,0.45); pointer-events: none; opacity: 0; transform: translate(-50%, -50%);"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review card (hidden initially, slides up) -->
+            <div id="cl-review" style="position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease, transform 0.6s ease; pointer-events: none;">
+              <div style="background: #f7f8ff; border-radius: 20px; padding: 24px; box-shadow: 0 8px 40px rgba(67,97,238,0.1), 0 2px 8px rgba(0,0,0,0.06);">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+                  <div style="position: relative; width: 31px; height: 31px; border-radius: 17px; background: #f3f7ff; border: 1.5px solid rgba(38,99,235,0.2); flex-shrink: 0;">
+                    <img src="images/coach-avatar-icon.svg" style="position: absolute; left: 6.5px; top: 6.5px; width: 18px; height: 18px;" alt="" />
+                    <div style="position: absolute; left: 22.5px; top: 23.25px; width: 8px; height: 8px; border-radius: 99px; background: #4ade80; border: 1.5px solid white;"></div>
+                  </div>
+                  <div>
+                    <p style="font-size: 13px; font-weight: 600; color: #0e1127; line-height: 1;">Your Coach</p>
+                    <p style="font-size: 11px; color: #9499bb; margin-top: 2px;">Week of May 9–17</p>
+                  </div>
+                </div>
+                <p style="font-size: 15px; color: #515775; line-height: 1.7;">Four out of five sessions done and the quality was there. Tuesday's sweet spot held 178W across all three intervals with clean HR — your aerobic engine is absorbing this load well. Thursday got cut but Saturday's long ride more than made up for it, 4 hours with flat pacing through the back half. Your sustained power gap is closing.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Panel 3: block review card -->
+          <div class="cl-panel" id="cl-p3" style="position: absolute; width: 100%; max-width: 420px; opacity: 0; pointer-events: none; transition: opacity 0.5s ease;">
+            <div style="background: #f7f8ff; border-radius: 20px; padding: 24px; box-shadow: 0 8px 40px rgba(67,97,238,0.1), 0 2px 8px rgba(0,0,0,0.06); max-height: 500px; overflow: hidden; position: relative;">
+
+              <!-- Coach avatar header -->
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+                <div style="position: relative; width: 31px; height: 31px; border-radius: 17px; background: #f3f7ff; border: 1.5px solid rgba(38,99,235,0.2); flex-shrink: 0;">
+                  <img src="images/coach-avatar-icon.svg" style="position: absolute; left: 6.5px; top: 6.5px; width: 18px; height: 18px;" alt="" />
+                  <div style="position: absolute; left: 22.5px; top: 23.25px; width: 8px; height: 8px; border-radius: 99px; background: #4ade80; border: 1.5px solid white;"></div>
+                </div>
+                <div>
+                  <p style="font-size: 13px; font-weight: 600; color: #0e1127; line-height: 1;">Your Coach</p>
+                  <p style="font-size: 11px; color: #9499bb; margin-top: 2px;">Block 1 · May 9 – Jun 6 2026</p>
+                </div>
+              </div>
+
+              <!-- Block label -->
+              <p style="font-size: 12px; font-weight: 600; color: #9499bb; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px;">Block 1 complete</p>
+
+              <!-- Stats card -->
+              <div style="background: white; border: 1px solid #eceef8; border-radius: 16px; padding: 16px 8px; margin-bottom: 12px;">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+
+                  <!-- Score ring + Rides (grouped, side by side) -->
+                  <div style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; min-width: 0;">
+                    <div style="position: relative; width: 52px; height: 52px; flex-shrink: 0; overflow: hidden;">
+                      <svg width="52" height="52" viewBox="0 0 52 52" style="transform: rotate(-90deg);">
+                        <circle cx="26" cy="26" r="20" fill="none" stroke="#eceef8" stroke-width="3.5"/>
+                        <circle cx="26" cy="26" r="20" fill="none" stroke="#4ade80" stroke-width="3.5" stroke-dasharray="106.8 125.7" stroke-linecap="round"/>
+                      </svg>
+                      <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 14px; font-weight: 600; color: #9499bb; line-height: 1;">85</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; white-space: nowrap;">
+                      <div>
+                        <span style="font-size: 16px; font-weight: 600; color: #515775; line-height: 24px;">18</span><span style="font-size: 14px; color: #515775; line-height: 22px;">/25</span>
+                      </div>
+                      <span style="font-size: 14px; color: #9499bb; line-height: 22px;">RIDES</span>
+                    </div>
+                  </div>
+
+                  <div style="width: 1px; height: 45px; background: #eceef8; flex-shrink: 0;"></div>
+
+                  <!-- FTP -->
+                  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span style="font-size: 16px; font-weight: 600; color: #515775; line-height: 24px; white-space: nowrap;">215 W</span>
+                      <span style="font-size: 14px; font-weight: 600; color: #16a34a; background: #f0fdf7; padding: 0 8px; border-radius: 8px; width: 34px; text-align: center; box-sizing: border-box; line-height: 22px;">+5</span>
+                    </div>
+                    <span style="font-size: 14px; color: #9499bb; line-height: 22px;">FTP</span>
+                  </div>
+
+                  <div style="width: 1px; height: 45px; background: #eceef8; flex-shrink: 0;"></div>
+
+                  <!-- Longest ride -->
+                  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span style="font-size: 16px; font-weight: 600; color: #515775; line-height: 24px; white-space: nowrap;">2h30</span>
+                      <span style="font-size: 14px; font-weight: 600; color: #f87171; background: #fff1f1; padding: 0 8px; border-radius: 8px; width: 44px; text-align: center; box-sizing: border-box; line-height: 22px;">-20</span>
+                    </div>
+                    <span style="font-size: 14px; color: #9499bb; line-height: 22px; white-space: nowrap;">LONGEST RIDE</span>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Progress towards goal -->
+              <p style="font-size: 12px; font-weight: 600; color: #9499bb; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">Progress towards goal</p>
+              <div style="background: white; border: 1px solid #eceef8; border-radius: 16px; padding: 0 16px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; padding: 10px 0; align-items: center;">
+                  <span style="font-size: 14px; font-weight: 600; color: #141824;">Aerobic Base</span>
+                  <span style="font-size: 13px; color: #9499bb;">10.2% → <b style="color: #9499bb; font-weight: 600;">8.7%</b></span>
+                  <span style="font-size: 11px; font-weight: 600; color: #16a34a; background: #dbf8e6; padding: 2px 8px; border-radius: 6px; white-space: nowrap;">Progressing</span>
+                </div>
+                <div style="height: 1px; background: #eceef8;"></div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; padding: 10px 0; align-items: center;">
+                  <span style="font-size: 14px; font-weight: 600; color: #141824;">Durability</span>
+                  <span style="font-size: 13px; color: #9499bb;">14.1% → <b style="color: #9499bb; font-weight: 600;">13.8%</b></span>
+                  <span style="font-size: 11px; font-weight: 600; color: #d97706; background: #fef9c3; padding: 2px 8px; border-radius: 6px; white-space: nowrap;">Stalled</span>
+                </div>
+                <div style="height: 1px; background: #eceef8;"></div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; padding: 10px 0; align-items: center;">
+                  <span style="font-size: 14px; font-weight: 600; color: #141824;">Threshold</span>
+                  <span style="font-size: 13px; color: #9499bb;">5.1% → <b style="color: #9499bb; font-weight: 600;">3.2%</b></span>
+                  <span style="font-size: 11px; font-weight: 600; color: #16a34a; background: #dbf8e6; padding: 2px 8px; border-radius: 6px; white-space: nowrap;">Progressing</span>
+                </div>
+              </div>
+
+              <!-- How did this block go? -->
+              <div style="background: white; border: 1px solid #eceef8; border-radius: 16px; padding: 14px 16px; margin-top: 12px;">
+                <p style="font-size: 14px; font-weight: 600; color: #141824; margin-bottom: 6px;">How did this block go?</p>
+                <p style="font-size: 14px; color: #515775; line-height: 1.6;">The first three weeks showed real aerobic development — you hit the 2h30 duration target and kept decoupling under 5% even as ride length increased. But training fell off completely in week 4, which means the adaptations didn't get the consistency needed to stick. Durability is still sitting 6% behind target, and that's the one that matters most for a 160km gran fondo.</p>
+              </div>
+
+              <!-- What did we learn? -->
+              <div style="background: white; border: 1px solid #eceef8; border-radius: 16px; padding: 14px 16px; margin-top: 8px;">
+                <p style="font-size: 14px; font-weight: 600; color: #141824; margin-bottom: 6px;">What did we learn?</p>
+                <p style="font-size: 14px; color: #515775; line-height: 1.6;">Your aerobic system responds quickly when you stay consistent. Week 1: 2h43 at 155W with 4.1% decoupling. Week 3: 2h40 at 141W with 3.2% decoupling — you maintained duration while decoupling improved.</p>
+              </div>
+
+              <!-- Fade overlay -->
+              <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 100px; background: linear-gradient(to bottom, transparent, #f7f8ff); pointer-events: none; border-radius: 0 0 20px 20px;"></div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: scrolling moments -->
+        <div style="width: 50%; padding-left: 64px;">
+
+          <!-- Moment 1 -->
+          <div style="height: 100vh; display: flex; flex-direction: column; justify-content: center; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 24px; height: 2px; background: #4361ee;"></div>
+              <span style="font-size: 12px; font-weight: 600; color: #4361ee; letter-spacing: 0.08em; text-transform: uppercase;">01</span>
+            </div>
+            <h3 style="font-size: clamp(28px, 3vw, 40px); font-weight: 800; color: #0e1127; line-height: 1.2; letter-spacing: -0.5px;">After every ride.</h3>
+            <p style="font-size: 16px; color: #3B435B; line-height: 1.7; max-width: 380px;">Steady reviews what actually happened — not what was planned. Specific, coaching language that tells you where you stand.</p>
+          </div>
+
+          <!-- Moment 2 -->
+          <div style="height: 100vh; display: flex; flex-direction: column; justify-content: center; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 24px; height: 2px; background: #4361ee;"></div>
+              <span style="font-size: 12px; font-weight: 600; color: #4361ee; letter-spacing: 0.08em; text-transform: uppercase;">02</span>
+            </div>
+            <h3 style="font-size: clamp(28px, 3vw, 40px); font-weight: 800; color: #0e1127; line-height: 1.2; letter-spacing: -0.5px;">At the end of every week.</h3>
+            <p style="font-size: 16px; color: #3B435B; line-height: 1.7; max-width: 380px;">Planned vs actual. What worked, what didn't, and what it means for next week.</p>
+          </div>
+
+          <!-- Moment 3 -->
+          <div style="height: 100vh; display: flex; flex-direction: column; justify-content: center; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 24px; height: 2px; background: #4361ee;"></div>
+              <span style="font-size: 12px; font-weight: 600; color: #4361ee; letter-spacing: 0.08em; text-transform: uppercase;">03</span>
+            </div>
+            <h3 style="font-size: clamp(28px, 3vw, 40px); font-weight: 800; color: #0e1127; line-height: 1.2; letter-spacing: -0.5px;">At the end of each training block.</h3>
+            <p style="font-size: 16px; color: #3B435B; line-height: 1.7; max-width: 380px;">A full picture of where you stand. Your next 4-week training block is built based on how your training went as well as your goal.</p>
+          </div>
+
         </div>
       </div>
     </div>
+
+    </div><!-- end desktop scrollytelling wrapper -->
+
+    <!-- Bottom padding (desktop only) -->
+    <div class="hidden lg:block" style="height: 80px;"></div>
+
   </section>
 
   <!-- What You Get Section -->
   <section id="features" class="py-16 lg:py-20 px-4 lg:px-20" style="background: #f6f7ff;">
     <div class="max-w-[1280px] mx-auto flex flex-col gap-4 lg:gap-6">
       <!-- Header -->
-      <div class="flex flex-col gap-2 text-center mb-8 lg:mb-12">
+      <div class="flex flex-col gap-2 text-center mb-4 lg:mb-6">
         <h2 class="text-[#0e1127] text-[32px] lg:text-[44px] font-extrabold leading-tight">What You Get With Steady</h2>
         <p class="text-[#3b435b] text-lg lg:text-xl">Everything you need to stop wondering and start knowing.</p>
       </div>
 
       <!-- Row 1: No more junk miles — image left, numbered steps right -->
-      <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-6 pb-10 lg:pb-14 border-b border-[#eef0ff]">
+      <div class="flex flex-col lg:flex-row items-center gap-1 lg:gap-12 pb-10 lg:pb-14 border-b border-[#eef0ff]">
         <!-- Image -->
-        <div class="w-full lg:w-[61%] lg:max-w-[683px] shrink-0">
+        <div class="w-full max-w-[480px] mx-auto lg:max-w-none lg:w-1/2">
           <picture>
             <img src="images/card-whatYouGet-1.png" alt="Workout screen with power targets and an explanation of why this session connects to event goals" class="w-full h-auto" loading="lazy" />
           </picture>
         </div>
         <!-- Text -->
-        <div class="flex-1 flex flex-col gap-6 max-w-[537px]">
+        <div class="w-full lg:w-1/2 flex flex-col gap-6">
           <h3 class="text-[#0e1127] text-[28px] lg:text-[36px] font-extrabold" style="line-height: 48px;">No more junk miles</h3>
           <div class="flex flex-col divide-y divide-[#eef0ff]">
             <!-- Step 1 (active) -->
@@ -348,9 +1076,9 @@
       </div>
 
       <!-- Row 2: Your coach adapts — text + pills left, chat animation right -->
-      <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-14 py-10 lg:py-14 border-b border-[#eef0ff]">
+      <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 py-10 lg:py-14 border-b border-[#eef0ff]">
         <!-- Text -->
-        <div class="flex-1 flex flex-col gap-6 order-2 lg:order-1 max-w-[537px]">
+        <div class="w-full lg:w-1/2 flex flex-col gap-6 order-2 lg:order-1">
           <h3 class="text-[#0e1127] text-[28px] lg:text-[36px] font-extrabold leading-tight">Your coach adapts to your life</h3>
           <p class="text-[#3d4475] text-base leading-relaxed">When life disrupts training, the plan adjusts — and tells you why. You always know where you stand and what changed.</p>
           <div class="flex flex-wrap gap-2">
@@ -362,18 +1090,13 @@
           </div>
         </div>
         <!-- Chat animation -->
-        <div class="w-full lg:flex-1 flex justify-center order-1 lg:order-2">
+        <div class="w-full max-w-[480px] mx-auto lg:max-w-none lg:w-1/2 flex justify-center order-1 lg:order-2">
           <div class="chat-demo" id="chatDemo">
             <div class="cd-header">
               <div style="display:flex;align-items:center;gap:12px;">
                 <div class="cd-avatar-wrap">
-                  <div class="cd-avatar">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                      <path d="M12 3C7.029 3 3 6.357 3 10.5c0 2.42 1.46 4.576 3.73 5.94L5.5 20.5l4.08-2.04C10.36 18.8 11.16 18.93 12 18.93c4.971 0 9-3.287 9-7.43S16.971 3 12 3Z" fill="white" opacity="0.95"/>
-                      <circle cx="8.5" cy="10.5" r="1.2" fill="#6C3AED"/>
-                      <circle cx="12" cy="10.5" r="1.2" fill="#6C3AED"/>
-                      <circle cx="15.5" cy="10.5" r="1.2" fill="#6C3AED"/>
-                    </svg>
+                  <div style="position: relative; width: 34px; height: 34px; border-radius: 17px; background: #f3f7ff; border: 1.5px solid rgba(38,99,235,0.2);">
+                    <img src="images/coach-avatar-icon.svg" style="position: absolute; left: 7px; top: 7px; width: 20px; height: 20px;" alt="" />
                   </div>
                   <div class="cd-online-dot"></div>
                 </div>
@@ -458,160 +1181,429 @@
       </div>
 
       <!-- Row 3: Progress you can see — image left, text right -->
-      <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-14 pt-10 lg:pt-14">
+      <div class="flex flex-col lg:flex-row items-center gap-1 lg:gap-12 pt-10 lg:pt-14">
         <!-- Image -->
-        <div class="w-full lg:w-[540px] shrink-0">
+        <div class="w-full max-w-[480px] mx-auto lg:max-w-none lg:w-1/2">
           <picture>
-            <source srcset="images/card-progress.webp" type="image/webp" />
-            <img src="images/card-progress.png" alt="Progress chart showing fitness gaps closing week by week toward event targets" class="w-full h-auto" loading="lazy" width="1200" height="916" />
+            <img src="images/cards-features-3-progress.png" alt="Progress chart showing fitness gaps closing week by week toward event targets" class="w-full h-auto" loading="lazy" />
           </picture>
         </div>
         <!-- Text -->
-        <div class="flex-1 flex flex-col gap-6 max-w-[537px]">
-          <h3 class="text-[#0e1127] text-[28px] lg:text-[36px] font-extrabold leading-tight">Progress you can see</h3>
-          <p class="text-[#3d4475] text-base leading-relaxed">See your progress week by week on the metrics that matter for your event. No more guessing — you know if you're on track.</p>
+        <div class="w-full lg:w-1/2 flex flex-col gap-6">
+          <h3 class="text-[#0e1127] text-[28px] lg:text-[36px] font-extrabold leading-tight">Progress you don't have to analyze</h3>
+          <p class="text-[#3d4475] text-base leading-relaxed">Steady sends you feedback every step of the way. You worry about the training. We help you stay on track.</p>
+
+          <!-- Checklist items -->
+          <div class="flex flex-col gap-3">
+
+            <!-- Item 1 -->
+            <div class="flex gap-5 items-start">
+              <div class="w-10 h-10 rounded-[12px] shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, #4361EE 0%, #7B4FE0 100%); box-shadow: 0 4px 14px rgba(67,97,238,0.35);">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <p class="text-[#3d4475] text-[16px] leading-[28px] py-[6px]">Coach feedback <strong class="font-bold">after every workout</strong></p>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="flex gap-5 items-start">
+              <div class="w-10 h-10 rounded-[12px] shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, #4361EE 0%, #7B4FE0 100%); box-shadow: 0 4px 14px rgba(67,97,238,0.35);">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <p class="text-[#3d4475] text-[16px] leading-[28px] py-[6px]">Weekly review <strong class="font-bold">at the end of each week</strong></p>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="flex gap-5 items-start">
+              <div class="w-10 h-10 rounded-[12px] shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, #4361EE 0%, #7B4FE0 100%); box-shadow: 0 4px 14px rgba(67,97,238,0.35);">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="text-[#3d4475] text-[16px] leading-[24px] py-[6px]">
+                <p>Detailed review <strong class="font-bold">after each training block</strong>.</p>
+                <p>A new block generated based on what actually happened.</p>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- Not Another AI App Section -->
-  <section class="bg-white py-16 lg:py-20 px-4 lg:px-20">
-    <div class="max-w-[832px] mx-auto">
-      <div class="bg-[#F8FAFC] border border-[#F1F5F9] rounded-3xl p-4 pt-6 lg:p-16 flex flex-col gap-4 lg:gap-6 shadow-sm backdrop-blur-sm">
-        <h2 class="text-[#141824] text-4xl lg:text-5xl font-bold leading-[1.11]">
-          Not Another<br/>AI Training App
-        </h2>
-        <p class="text-[#141824] text-lg lg:text-xl font-medium leading-relaxed max-w-[702px]">
-          Other apps generate workouts with algorithms. Steady applies training science to your event and shows you the progress that matters.
+  <!-- Comparison Table Section -->
+  <section class="bg-white py-16 lg:py-24 px-4 lg:px-20">
+    <div class="max-w-[1024px] mx-auto flex flex-col gap-10 lg:gap-14">
+
+      <!-- Header -->
+      <div class="flex flex-col gap-3 text-center items-center">
+        <span class="text-[#4361ee] text-sm font-semibold tracking-wider uppercase">The honest comparison</span>
+        <h2 class="text-[#0e1127] text-[32px] lg:text-[44px] font-extrabold leading-tight">Where Steady sits</h2>
+        <p class="text-[#3d4475] text-base lg:text-lg leading-relaxed max-w-[560px]">
+          Less than one session with a human coach. More than any training app will ever give you.
         </p>
-        <div class="flex flex-col md:flex-row gap-4 lg:gap-12 py-4">
-          <!-- The Foundation -->
-          <div class="flex-1 flex flex-col gap-4">
-            <h3 class="text-[#141824] text-base font-bold">The Foundation</h3>
-            <ul class="flex flex-col gap-3">
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#2663EB] shrink-0"></span><span class="text-[#3B435B] text-sm">Periodization (base &rarr; build &rarr; peak)</span></li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#2663EB] shrink-0"></span><span class="text-[#3B435B] text-sm">Progressive overload</span></li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#2663EB] shrink-0"></span><span class="text-[#3B435B] text-sm">Specificity (matches event demands)</span></li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#2663EB] shrink-0"></span><span class="text-[#3B435B] text-sm">Recovery cycles</span></li>
-            </ul>
+      </div>
+
+      <!-- Table -->
+      <div class="overflow-x-auto -mx-4 px-4">
+        <table style="width: 100%; border-collapse: separate; border-spacing: 0; min-width: 560px;">
+          <colgroup>
+            <col style="width: 36%;" />
+            <col style="width: 21%;" />
+            <col style="width: 21%;" />
+            <col style="width: 22%;" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th style="padding: 0 0 16px 0;"></th>
+              <!-- Human coach -->
+              <th style="padding: 0 8px 16px; text-align: center; vertical-align: bottom;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                  <span style="font-size: 13px; color: #9499bb; font-weight: 500;">Human coach</span>
+                </div>
+              </th>
+              <!-- Steady — highlighted -->
+              <th style="padding: 14px 8px 18px; text-align: center; vertical-align: bottom; background: rgba(67, 97, 238, 0.05); border-left: 1.5px solid #c0c8f0; border-right: 1.5px solid #c0c8f0; border-top: 1.5px solid #c0c8f0; border-radius: 16px 16px 0 0;
+">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                  <img src="images/logo-icon.svg" alt="" style="width: 22px; height: 22px;" />
+                  <span style="font-size: 14px; color: #2663eb; font-weight: 700; letter-spacing: -0.2px;">Steady</span>
+                </div>
+              </th>
+              <!-- Training app -->
+              <th style="padding: 0 8px 16px; text-align: center; vertical-align: bottom;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                  <span style="font-size: 13px; color: #9499bb; font-weight: 500;">Training app</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <!-- Row helper: alternating bg via inline style on tr -->
+
+            <!-- Row 1 -->
+            <tr style="background: #f7f8ff;">
+              <td style="padding: 16px 16px 16px 20px; font-size: 14px; font-weight: 600; color: #0e1127; border-radius: 12px 0 0 12px;">Personalized plan</td>
+              <td style="padding: 16px 8px; text-align: center;">
+                <svg width="14" height="12" viewBox="0 0 12 10" fill="none" style="display: block; margin: 0 auto;"><path d="M1 5L4.5 8.5L11 1.5" stroke="#4ade80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </td>
+              <td style="padding: 16px 8px; text-align: center; background: rgba(67, 97, 238, 0.05); border-left: 1.5px solid #c0c8f0; border-right: 1.5px solid #c0c8f0;">
+                <svg width="14" height="12" viewBox="0 0 12 10" fill="none" style="display: block; margin: 0 auto;"><path d="M1 5L4.5 8.5L11 1.5" stroke="#4ade80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </td>
+              <td style="padding: 16px 16px 16px 8px; text-align: center; border-radius: 0 12px 12px 0;">
+                <span style="font-size: 13px; color: #9499bb; font-weight: 500;">Sort of</span>
+              </td>
+            </tr>
+
+            <!-- Row 2 -->
+            <tr style="background: white;">
+              <td style="padding: 16px 16px 16px 20px; font-size: 14px; font-weight: 600; color: #0e1127; border-radius: 12px 0 0 12px;">Feedback after every ride</td>
+              <td style="padding: 16px 8px; text-align: center;">
+                <span style="font-size: 13px; color: #9499bb; font-weight: 500;">If they check</span>
+              </td>
+              <td style="padding: 16px 8px; text-align: center; background: rgba(67, 97, 238, 0.05); border-left: 1.5px solid #c0c8f0; border-right: 1.5px solid #c0c8f0;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 2px;">
+                  <svg width="14" height="12" viewBox="0 0 12 10" fill="none" style="display: block; margin: 0 auto;"><path d="M1 5L4.5 8.5L11 1.5" stroke="#4ade80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span style="font-size: 11px; color: #8892c8; font-weight: 500;">within minutes</span>
+                </div>
+              </td>
+              <td style="padding: 16px 16px 16px 8px; text-align: center; border-radius: 0 12px 12px 0;">
+                <span style="color: #f87171; font-size: 18px;">✕</span>
+              </td>
+            </tr>
+
+            <!-- Row 3 -->
+            <tr style="background: #f7f8ff;">
+              <td style="padding: 16px 16px 16px 20px; font-size: 14px; font-weight: 600; color: #0e1127; border-radius: 12px 0 0 12px;">Weekly review</td>
+              <td style="padding: 16px 8px; text-align: center;">
+                <span style="font-size: 13px; color: #9499bb; font-weight: 500;">If you're lucky</span>
+              </td>
+              <td style="padding: 16px 8px; text-align: center; background: rgba(67, 97, 238, 0.05); border-left: 1.5px solid #c0c8f0; border-right: 1.5px solid #c0c8f0;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 2px;">
+                  <svg width="14" height="12" viewBox="0 0 12 10" fill="none" style="display: block; margin: 0 auto;"><path d="M1 5L4.5 8.5L11 1.5" stroke="#4ade80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span style="font-size: 11px; color: #8892c8; font-weight: 500;">every week</span>
+                </div>
+              </td>
+              <td style="padding: 16px 16px 16px 8px; text-align: center; border-radius: 0 12px 12px 0;">
+                <span style="color: #f87171; font-size: 18px;">✕</span>
+              </td>
+            </tr>
+
+            <!-- Row 4 -->
+            <tr style="background: white;">
+              <td style="padding: 16px 16px 16px 20px; font-size: 14px; font-weight: 600; color: #0e1127; border-radius: 12px 0 0 12px;">Adapts to how you respond</td>
+              <td style="padding: 16px 8px; text-align: center;">
+                <span style="font-size: 13px; color: #9499bb; font-weight: 500;">Good ones do</span>
+              </td>
+              <td style="padding: 16px 8px; text-align: center; background: rgba(67, 97, 238, 0.05); border-left: 1.5px solid #c0c8f0; border-right: 1.5px solid #c0c8f0;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 2px;">
+                  <svg width="14" height="12" viewBox="0 0 12 10" fill="none" style="display: block; margin: 0 auto;"><path d="M1 5L4.5 8.5L11 1.5" stroke="#4ade80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span style="font-size: 11px; color: #8892c8; font-weight: 500;">automatically</span>
+                </div>
+              </td>
+              <td style="padding: 16px 16px 16px 8px; text-align: center; border-radius: 0 12px 12px 0;">
+                <span style="color: #f87171; font-size: 18px;">✕</span>
+              </td>
+            </tr>
+
+            <!-- Row 5 -->
+            <tr style="background: #f7f8ff;">
+              <td style="padding: 16px 16px 16px 20px; font-size: 14px; font-weight: 600; color: #0e1127; border-radius: 12px 0 0 12px;">Knows your training history</td>
+              <td style="padding: 16px 8px; text-align: center;">
+                <span style="font-size: 13px; color: #9499bb; font-weight: 500;">If you tell them</span>
+              </td>
+              <td style="padding: 16px 8px; text-align: center; background: rgba(67, 97, 238, 0.05); border-left: 1.5px solid #c0c8f0; border-right: 1.5px solid #c0c8f0;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 2px;">
+                  <svg width="14" height="12" viewBox="0 0 12 10" fill="none" style="display: block; margin: 0 auto;"><path d="M1 5L4.5 8.5L11 1.5" stroke="#4ade80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span style="font-size: 11px; color: #8892c8; font-weight: 500;">from Strava</span>
+                </div>
+              </td>
+              <td style="padding: 16px 16px 16px 8px; text-align: center; border-radius: 0 12px 12px 0;">
+                <span style="font-size: 13px; color: #9499bb; font-weight: 500;">Partially</span>
+              </td>
+            </tr>
+
+            <!-- Row 6 -->
+            <tr style="background: white;">
+              <td style="padding: 16px 16px 16px 20px; font-size: 14px; font-weight: 600; color: #0e1127; border-radius: 12px 0 0 12px;">Available 24/7</td>
+              <td style="padding: 16px 8px; text-align: center;">
+                <span style="color: #f87171; font-size: 18px;">✕</span>
+              </td>
+              <td style="padding: 16px 8px; text-align: center; background: rgba(67, 97, 238, 0.05); border-left: 1.5px solid #c0c8f0; border-right: 1.5px solid #c0c8f0;">
+                <svg width="14" height="12" viewBox="0 0 12 10" fill="none" style="display: block; margin: 0 auto;"><path d="M1 5L4.5 8.5L11 1.5" stroke="#4ade80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </td>
+              <td style="padding: 16px 16px 16px 8px; text-align: center; border-radius: 0 12px 12px 0;">
+                <span style="font-size: 13px; color: #9499bb; font-weight: 500;">N/A</span>
+              </td>
+            </tr>
+
+            <!-- Price row -->
+            <tr>
+              <td style="padding: 20px 16px 4px 20px; font-size: 14px; font-weight: 600; color: #0e1127; border-radius: 12px 0 0 0;">Price</td>
+              <td style="padding: 20px 8px 4px; text-align: center;">
+                <span style="font-size: 14px; color: #515775; font-weight: 600;">€150–300<span style="font-size: 12px; font-weight: 400; color: #9499bb;">/mo</span></span>
+              </td>
+              <td style="padding: 20px 8px 16px; text-align: center; background: rgba(67, 97, 238, 0.05); border-left: 1.5px solid #c0c8f0; border-right: 1.5px solid #c0c8f0; border-bottom: 1.5px solid #c0c8f0; border-radius: 0 0 16px 16px;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 2px;">
+                  <span style="font-size: 22px; color: #2663eb; font-weight: 800; letter-spacing: -0.5px;">€35<span style="font-size: 13px; font-weight: 500; color: #8892c8;">/mo</span></span>
+                  <span style="font-size: 11px; color: #8892c8; font-weight: 500;">€15/mo founding rate</span>
+                </div>
+              </td>
+              <td style="padding: 20px 16px 4px 8px; text-align: center; border-radius: 0 12px 0 0;">
+                <span style="font-size: 14px; color: #515775; font-weight: 600;">€15–20<span style="font-size: 12px; font-weight: 400; color: #9499bb;">/mo</span></span>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Methodology Section -->
+  <section id="how-it-works" style="background: #f6f7ff; padding: 60px 24px;" class="lg:!p-[80px]">
+    <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px;">
+
+      <!-- Header -->
+      <div style="text-align: center; display: flex; flex-direction: column; gap: 12px; align-items: center;">
+        <span style="color: #2663eb; font-size: 14px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;">THE METHODOLOGY</span>
+        <h2 style="color: #141824; font-size: 44px; font-weight: 800; line-height: 1.09; margin: 0;">Built on Training Science,<br/>Not LLM Vibes</h2>
+        <p style="color: #3b435b; font-size: 16px; line-height: 24px; max-width: 650px; margin: 0;">Steady is based on proven endurance training principles: periodization, progressive overload, and event-specific adaptation. The same science human coaches use, applied systematically to your data.</p>
+      </div>
+
+      <!-- 3-col grid: visuals row + text row -->
+      <div class="lg:grid" style="display: flex; flex-direction: column; gap: 48px;" id="methodology-grid">
+      <style>
+        @media (min-width: 1024px) {
+          #methodology-grid { display: grid !important; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto; gap: 32px 80px; }
+          #methodology-gap { align-self: end; }
+          #methodology-card { align-self: end; }
+        }
+        @media (max-width: 1023px) {
+          #how-it-works h2 { font-size: 32px !important; }
+          #how-it-works h3 { font-size: 24px !important; line-height: 32px !important; }
+          #methodology-gap { padding-bottom: 0 !important; }
+        }
+      </style>
+
+        <!-- Col 1, Row 1: Goal image -->
+        <div style="grid-column: 1; grid-row: 1;">
+          <img src="images/methodology-goals.png" alt="Steady goal types — gran fondo, performance target, multi-day trip" style="width: 100%; border-radius: 12px;" />
+        </div>
+
+        <!-- Col 1, Row 2: Text -->
+        <div style="grid-column: 1; grid-row: 2; display: flex; flex-direction: column; gap: 24px;">
+          <h3 style="font-size: 36px; font-weight: 800; color: #0e1127; line-height: 48px; margin: 0;">Your Goal Has Specific Demands</h3>
+          <p style="font-size: 16px; color: #3b435b; line-height: 26px; margin: 0;">Whether you're chasing a gran fondo finish, a Zwift category upgrade, or a multi-day cycling trip — the demands are different, and the training should be too.</p>
+          <p style="font-size: 16px; color: #3b435b; line-height: 26px; margin: 0;">Steady analyzes what your specific goal actually requires and builds the training to match. Not "get fitter." Get ready for exactly this.</p>
+        </div>
+
+        <!-- Col 2, Row 1: Gap metrics -->
+        <div id="methodology-gap" style="grid-column: 2; grid-row: 1; display: flex; flex-direction: column; gap: 24px; padding-bottom: 24px;">
+          <div style="border-left: 2px solid #2663eb; padding-left: 26px; display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-size: 14px; color: #3b435b; letter-spacing: 0.7px; text-transform: uppercase;">60-min Power</span>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 20px; color: #3b435b; line-height: 28px;">193W</span>
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 7h10m0 0L7 3m4 4L7 11" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span style="font-size: 20px; font-weight: 700; color: #141824; line-height: 28px;">210W</span>
+              <span style="margin-left: 8px; background: #fee3e3; color: #e93c3c; font-size: 12px; font-weight: 700; padding: 4px 8px; border-radius: 4px;">GAP: -17W</span>
+            </div>
           </div>
-          <!-- How AI Helps -->
-          <div class="flex-1 flex flex-col gap-4">
-            <h3 class="text-[#141824] text-base font-bold">How AI Helps</h3>
-            <ul class="flex flex-col gap-3">
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#16A34A] shrink-0"></span><span class="text-[#3B435B] text-sm">Analyzes physiological demands</span></li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#16A34A] shrink-0"></span><span class="text-[#3B435B] text-sm">Measures current capabilities</span></li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#16A34A] shrink-0"></span><span class="text-[#3B435B] text-sm">Tracks progress week by week</span></li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#16A34A] shrink-0"></span><span class="text-[#3B435B] text-sm">Adjusts when life disrupts training</span></li>
-            </ul>
+          <div style="border-left: 2px solid #2663eb; padding-left: 26px; display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-size: 14px; color: #3b435b; letter-spacing: 0.7px; text-transform: uppercase;">Long Ride Capacity</span>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 20px; color: #3b435b; line-height: 28px;">3h 00m</span>
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 7h10m0 0L7 3m4 4L7 11" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span style="font-size: 20px; font-weight: 700; color: #141824; line-height: 28px;">5h 00m</span>
+              <span style="margin-left: 8px; background: #fee3e3; color: #e93c3c; font-size: 12px; font-weight: 700; padding: 4px 8px; border-radius: 4px;">GAP: -2h</span>
+            </div>
           </div>
         </div>
-        <div class="border-t border-[#E2E8F0] pt-4 lg:pt-10">
-          <p class="text-[#141824] text-base font-medium leading-relaxed">
-            Training science, executed precisely.
-          </p>
+
+        <!-- Col 2, Row 2: Text -->
+        <div style="grid-column: 2; grid-row: 2; display: flex; flex-direction: column; gap: 24px;">
+          <h3 style="font-size: 36px; font-weight: 800; color: #0e1127; line-height: 48px; margin: 0;">We Measure The Gap</h3>
+          <p style="font-size: 16px; color: #3b435b; line-height: 24px; margin: 0;">Where are you now on each of those demands? Where do you need to be by event day? We quantify the difference so you know exactly what you're training for.</p>
         </div>
+
+        <!-- Col 3, Row 1: Durability progress card (animated) -->
+        <div id="methodology-card" style="grid-column: 3; grid-row: 1;">
+          <div id="dur-card" style="background: white; border: 1px solid #eceef8; border-radius: 16px; padding: 25px; box-shadow: 0 20px 60px rgba(67,97,238,0.12); display: flex; flex-direction: column; gap: 16px; max-width: 548px;">
+            <!-- Header row -->
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 16px; font-weight: 600; color: #141824; line-height: 24px;">Durability</span>
+              <span id="dur-badge" style="background: #dbf8e6; color: #16a34a; font-size: 12px; font-weight: 600; padding: 3px 12px; border-radius: 99px; white-space: nowrap; line-height: 18px; opacity: 0; transition: opacity 0.4s ease;">🙌 Achieved</span>
+            </div>
+            <!-- Progress bar -->
+            <div style="background: #eceef8; border-radius: 99px; height: 6px; overflow: hidden;">
+              <div id="dur-bar" style="height: 100%; width: 75%; background: #2663eb; border-radius: 99px; transition: width 1.5s ease;"></div>
+            </div>
+            <!-- Values row -->
+            <div style="display: flex; align-items: center; gap: 4px; padding: 4px 0;">
+              <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                <span id="dur-current" style="font-size: 24px; font-weight: 700; color: #2663eb; line-height: 34px; white-space: nowrap; transition: color 0.5s ease;">3h 45m</span>
+                <span style="font-size: 12px; color: #9499bb; line-height: 18px;">Current</span>
+              </div>
+              <div style="padding: 6px 16px;">
+                <svg width="11" height="12" viewBox="0 0 12 14" fill="none"><path d="M1 7h10m0 0L7 3m4 4L7 11" stroke="#9499bb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div style="display: flex; flex-direction: column; align-items: flex-start; flex: 1;">
+                <span style="font-size: 24px; font-weight: 700; color: #515775; line-height: 34px;">5h 00m</span>
+                <span style="font-size: 12px; color: #9499bb; line-height: 18px;">Target</span>
+              </div>
+            </div>
+            <!-- Decoupling -->
+            <div style="display: flex; gap: 4px; align-items: center;">
+              <span style="font-size: 12px; color: #9499bb;">Decoupling:</span>
+              <span style="font-size: 12px; font-weight: 600; color: #16a34a;">1.8%</span>
+              <span style="font-size: 12px; color: #9499bb;">(target: below 2%)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 3, Row 2: Text -->
+        <div style="grid-column: 3; grid-row: 2; display: flex; flex-direction: column; gap: 24px;">
+          <h3 style="font-size: 36px; font-weight: 800; color: #0e1127; line-height: 48px; margin: 0;">You See Progress Week by Week</h3>
+          <p style="font-size: 16px; color: #3b435b; line-height: 24px; margin: 0;">Every week, you see if you're closing the gap. No more guessing. You see the progress that actually matters for your goal.</p>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Who This Is For -->
-  <section id="who-its-for" class="bg-[#F9FAFB] border-t border-[#E5E7EB] py-12 lg:py-24 px-4 lg:px-28">
-    <div class="max-w-[1216px] mx-auto flex flex-col gap-9 lg:gap-16">
-      <div class="flex flex-col lg:flex-row gap-9 lg:gap-16">
-        <!-- For You -->
-        <div class="flex-1 flex flex-col gap-6 lg:gap-8">
-          <div class="flex items-center gap-3">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#4361EE"/><path d="M10 16.5l4 4 8-8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <h2 class="text-[#141824] text-[24px] lg:text-[30px] font-bold">Who This Is For</h2>
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-16 lg:py-24 px-4 lg:px-20" style="background: white;">
+    <div class="max-w-[680px] mx-auto flex flex-col gap-6 lg:gap-8">
+
+      <!-- Header -->
+      <div class="flex flex-col gap-3 text-center items-center">
+        <h2 class="text-[#0e1127] text-[32px] lg:text-[44px] font-extrabold leading-tight">World-class coaching at a fraction of the price</h2>
+      </div>
+
+      <!-- Pricing card -->
+      <div style="background: #f7f8ff; border: 1.5px solid #e0e3f5; border-radius: 24px; overflow: hidden;">
+
+        <!-- Price options -->
+        <div style="padding: 36px 40px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+
+          <!-- Founding -->
+          <div style="background: white; border: 2px solid #4361ee; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 8px; position: relative; box-shadow: 0 4px 20px rgba(67,97,238,0.12);">
+            <div style="position: absolute; top: -11px; left: 16px; background: linear-gradient(135deg, #4361EE 0%, #7B4FE0 100%); color: white; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px;">Founding member</div>
+            <div style="display: flex; align-items: baseline; gap: 4px; margin-top: 6px;">
+              <span style="font-size: 36px; font-weight: 800; color: #2663eb; letter-spacing: -1px; line-height: 1;">€15</span>
+              <span style="font-size: 14px; color: #8892c8;">/mo</span>
+            </div>
+            <p style="font-size: 12px; color: #8892c8; line-height: 1.5; text-decoration: line-through;">€35/mo after founding closes</p>
+            <p style="font-size: 12px; font-weight: 600; color: #4361ee;">Saves €240/yr · locked for life</p>
+            <p style="font-size: 11px; color: #c0c4d8; margin-top: 2px;">First 50 subscribers only</p>
           </div>
-          <div class="flex flex-col gap-5 lg:gap-6">
-            <div class="flex gap-4">
-              <div class="pt-1 shrink-0"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l4 4 8-9" stroke="#4361EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="flex flex-col gap-1">
-                <span class="text-[#141824] text-base font-bold">Training for a specific event</span>
-                <span class="text-[#3B435B] text-sm">Gran fondo, sportive, a cycling trip with serious climbing.</span>
-              </div>
+
+          <!-- Standard -->
+          <div style="background: white; border: 1.5px solid #e0e3f5; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+            <div style="font-size: 11px; font-weight: 600; color: #9499bb; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 6px;">Standard</div>
+            <div style="display: flex; align-items: baseline; gap: 4px;">
+              <span style="font-size: 36px; font-weight: 800; color: #8892c8; letter-spacing: -1px; line-height: 1;">€35</span>
+              <span style="font-size: 14px; color: #c0c4d8;">/mo</span>
             </div>
-            <div class="flex gap-4">
-              <div class="pt-1 shrink-0"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l4 4 8-9" stroke="#4361EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="flex flex-col gap-1">
-                <span class="text-[#141824] text-base font-bold">Prefer steady progress over hero efforts</span>
-                <span class="text-[#3B435B] text-sm">You'd rather build consistently than blow up trying.</span>
-              </div>
+            <p style="font-size: 12px; color: #c0c4d8; line-height: 1.5;">Available after founding closes</p>
+            <p style="font-size: 12px; color: #c0c4d8; line-height: 1.5;">vs €150–300/mo for a human coach</p>
+          </div>
+
+        </div>
+
+        <!-- Features -->
+        <div style="padding: 16px 40px 28px;">
+          <p style="font-size: 11px; font-weight: 600; color: #8892c8; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;">What's included</p>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <svg width="16" height="13" viewBox="0 0 12 10" fill="none" style="flex-shrink: 0;"><path d="M1 5L4.5 8.5L11 1.5" stroke="#2663EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <p style="font-size: 15px; font-weight: 400; color: #0e1127; line-height: 1.5;">Personalized training plan</p>
             </div>
-            <div class="flex gap-4">
-              <div class="pt-1 shrink-0"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l4 4 8-9" stroke="#4361EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="flex flex-col gap-1">
-                <span class="text-[#141824] text-base font-bold">Want to understand your training</span>
-                <span class="text-[#3B435B] text-sm">Not just follow orders, but know <i>why</i>.</span>
-              </div>
+
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <svg width="16" height="13" viewBox="0 0 12 10" fill="none" style="flex-shrink: 0;"><path d="M1 5L4.5 8.5L11 1.5" stroke="#2663EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <p style="font-size: 15px; font-weight: 400; color: #0e1127; line-height: 1.5;">Coach feedback after every ride</p>
             </div>
-            <div class="flex gap-4">
-              <div class="pt-1 shrink-0"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l4 4 8-9" stroke="#4361EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="flex flex-col gap-1">
-                <span class="text-[#141824] text-base font-bold">Can't afford wasted sessions</span>
-                <span class="text-[#3B435B] text-sm">Limited hours mean every ride needs to count.</span>
-              </div>
+
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <svg width="16" height="13" viewBox="0 0 12 10" fill="none" style="flex-shrink: 0;"><path d="M1 5L4.5 8.5L11 1.5" stroke="#2663EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <p style="font-size: 15px; font-weight: 400; color: #0e1127; line-height: 1.5;">Weekly &amp; block reviews</p>
             </div>
+
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <svg width="16" height="13" viewBox="0 0 12 10" fill="none" style="flex-shrink: 0;"><path d="M1 5L4.5 8.5L11 1.5" stroke="#2663EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <p style="font-size: 15px; font-weight: 400; color: #0e1127; line-height: 1.5;">Unlimited chat with your coach</p>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <svg width="16" height="13" viewBox="0 0 12 10" fill="none" style="flex-shrink: 0;"><path d="M1 5L4.5 8.5L11 1.5" stroke="#2663EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <p style="font-size: 15px; font-weight: 400; color: #0e1127; line-height: 1.5;">Plan adjustments to fit your life</p>
+            </div>
+
           </div>
         </div>
 
-        <!-- Not For -->
-        <div class="flex-1 flex flex-col gap-6 lg:gap-8 opacity-70">
-          <div class="flex items-center gap-3">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#F4B4B4"/><path d="M11 11l10 10M21 11l-10 10" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-            <h2 class="text-[#3B435B] text-[24px] lg:text-[30px] font-bold">Not For</h2>
-          </div>
-          <div class="flex flex-col gap-5 lg:gap-6">
-            <div class="flex gap-4">
-              <div class="pt-1 shrink-0"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3l10 10M13 3L3 13" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/></svg></div>
-              <div class="flex flex-col gap-1">
-                <span class="text-[#3B435B] text-base font-bold">Quick Fix Seekers</span>
-                <span class="text-[#3B435B] text-sm">Looking for crash training or shortcuts.</span>
-              </div>
-            </div>
-            <div class="flex gap-4">
-              <div class="pt-1 shrink-0"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3l10 10M13 3L3 13" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/></svg></div>
-              <div class="flex flex-col gap-1">
-                <span class="text-[#3B435B] text-base font-bold">Generic Fitness</span>
-                <span class="text-[#3B435B] text-sm">Just want to "stay fit" without a specific event goal.</span>
-              </div>
-            </div>
-            <div class="flex gap-4">
-              <div class="pt-1 shrink-0"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3l10 10M13 3L3 13" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/></svg></div>
-              <div class="flex flex-col gap-1">
-                <span class="text-[#3B435B] text-base font-bold">Pure Racers</span>
-                <span class="text-[#3B435B] text-sm">Competitive criterium racers (this is for endurance event preparation).</span>
-              </div>
-            </div>
-          </div>
+        <!-- Divider -->
+        <div style="height: 1px; background: #e0e3f5; margin: 0 40px;"></div>
+
+        <!-- Trial note + CTA -->
+        <div style="padding: 0 40px 36px; display: flex; flex-direction: column; align-items: center; gap: 14px;">
+          <a href="#footer-cta" style="display: block; width: 100%; text-align: center; background: linear-gradient(163deg, #4361ee 0%, #7b4fe0 100%); color: white; font-family: 'Rubik', sans-serif; font-size: 16px; font-weight: 600; padding: 15px 24px; border-radius: 12px; text-decoration: none; box-shadow: 0 4px 24px rgba(67,97,238,0.35);">Join the Waitlist</a>
+          <p style="font-size: 13px; color: #9499bb; text-align: center;">No credit card required · no payment until your trial ends</p>
         </div>
+
       </div>
 
-      <!-- Requirements card — below both columns -->
-      <div class="bg-white border border-[#E2E8F0] rounded-xl p-4 lg:p-6 flex flex-col gap-4 shadow-sm max-w-md lg:max-w-[calc(50%-2rem)]">
-        <h3 class="text-[#141824] text-sm font-bold tracking-wide uppercase">Requirements</h3>
-        <div class="flex gap-6">
-          <div class="flex items-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8.5 1L3 9h4.5L7 15L13 7H8.5L9 1z" fill="#4361EE"/></svg>
-            <span class="text-[#3B435B] text-sm">Power Meter</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <svg width="11" height="14" viewBox="0 0 11 14" fill="none"><path d="M4.33125 0L0.191406 7.98438H2.63047L4.33125 4.80977L6.01836 7.98438H8.43828L4.33125 0ZM8.43828 7.98438L7.23789 10.3961L6.01836 7.98438H4.16992L7.23789 14L10.2867 7.98438H8.43828Z" fill="#2663EB"/></svg>
-            <span class="text-[#3B435B] text-sm">Strava Account</span>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
+
 
   <!-- FAQ Section -->
   <section id="faq" class="bg-white border-y border-[#E5E7EB] py-12 lg:py-24 px-4">
     <div class="max-w-[768px] mx-auto flex flex-col gap-12">
-      <h2 class="text-[#141824] text-[30px] font-bold text-center">Frequently Asked Questions</h2>
+      <h2 class="text-[#0e1127] text-[32px] lg:text-[44px] font-extrabold leading-tight text-center">Frequently Asked Questions</h2>
       <div class="flex flex-col gap-4">
         <div class="faq-item bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl">
           <button onclick="toggleFaq(this)" class="w-full p-4 flex items-center justify-between gap-6 text-left">
@@ -619,7 +1611,7 @@
             <svg class="faq-chevron shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#3B435B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div class="faq-answer px-4 text-[#3B435B] text-base leading-relaxed">
-            Steady supports any cycling endurance event: gran fondos, sportives, cycling trips with significant climbing, flat centuries, and long-distance rides. If your event has a specific date and measurable demands (distance, elevation, duration), Steady can build a plan for it.
+            Steady supports any cycling goal with a measurable target and a timeline: single-day events (granfondos, sportives, centuries), performance goals (Zwift category upgrade, FTP target, segment PB), and multi-day rides (Mallorca, TransAlp, bikepacking trips).
           </div>
         </div>
         <div class="faq-item bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl">
@@ -633,11 +1625,11 @@
         </div>
         <div class="faq-item bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl">
           <button onclick="toggleFaq(this)" class="w-full p-4 flex items-center justify-between gap-6 text-left">
-            <span class="text-[#3B435B] text-[16px] leading-[24px] font-medium">How is this different from TrainerRoad & other apps?</span>
+            <span class="text-[#3B435B] text-[16px] leading-[24px] font-medium">How is this different from a human coach?</span>
             <svg class="faq-chevron shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#3B435B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div class="faq-answer px-4 text-[#3B435B] text-base leading-relaxed">
-            Most training apps anchor everything to FTP — a single threshold number. Steady uses your aerobic threshold (LT1) instead, because it better reflects how your body actually sustains effort over hours of riding. And rather than generating a generic plan from that number, Steady starts from your event's specific demands, measures where you stand on each one, and focuses every workout on closing the gap. You always know what you're training for and why.
+            A good human coach reviews your training, adjusts your plan, and gives you feedback. Steady does the same thing — automatically, after every ride, for €35/mo instead of €150–300/mo. The difference: a human coach brings experience and intuition that AI can't replicate. Steady brings consistency — it never forgets your history, never misses a ride review, and never has a busy week where your check-in gets skipped.
           </div>
         </div>
         <div class="faq-item bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl">
@@ -664,7 +1656,9 @@
             <svg class="faq-chevron shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#3B435B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div class="faq-answer px-4 text-[#3B435B] text-base leading-relaxed">
-            No. The training methodology is built on proven endurance science: periodization, progressive overload, specificity, and recovery. AI helps analyze your data and personalize the plan, but the science comes first.
+            Steady is a coaching product. The training plan is the starting point — what makes Steady different is what happens after: personalized feedback after every ride, weekly reviews that reflect what actually happened, and a plan that adapts to how you respond. No training app does this. A human coach does.
+            <br/><br/>
+            The plan itself isn't LLM output either. By the time Steady writes a workout, most of the decisions are already made deterministically: your event's specific demands have been analysed, the gap between your current fitness and what's required has been measured in real numbers, and the training architecture — volume, intensity zones, block structure, progression — is built from that gap, not generated from a prompt. Intensity is anchored to your aerobic threshold, not FTP. Every 4 weeks, the plan is rebuilt from scratch based on how your fitness actually changed. The AI handles the texture. The structure comes from training science.
           </div>
         </div>
         <div class="faq-item bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl">
@@ -684,7 +1678,7 @@
   <section id="footer-cta" class="relative py-12 lg:py-32 px-4" style="background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(239,246,255,1) 100%);">
     <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(0deg, rgba(38,99,235,0.05) 0%, rgba(38,99,235,0) 100%);"></div>
     <div class="relative max-w-[896px] mx-auto flex flex-col items-center gap-6 text-center px-0 lg:px-8">
-      <h2 class="text-[#141824] text-4xl lg:text-5xl font-bold leading-[1.18]">Ready to know you're on track?</h2>
+      <h2 class="text-[#0e1127] text-[32px] lg:text-[44px] font-extrabold leading-tight">Ready to know you're on track?</h2>
       <p class="text-[#3B435B] text-xl">Launching March 2026. Early access will be limited.</p>
 
       <!-- Email input — inline on desktop, stacked on mobile -->
@@ -833,7 +1827,7 @@
   <!-- Footer -->
   <footer class="border-t border-[#E5E7EB] py-8 px-4">
     <div class="max-w-[1216px] mx-auto flex items-center justify-between text-[#3B435B] text-sm">
-      <img src="images/logo.svg" alt="Steady" class="h-8 opacity-60" />
+      <img src="images/LOGO - horizontal.svg" alt="Steady" width="114" height="36" class="opacity-60" />
       <div class="flex items-center gap-6">
         <a href="/privacy.html" class="hover:text-[#141824] transition-colors">Privacy</a>
         <a href="/terms.html" class="hover:text-[#141824] transition-colors">Terms</a>
@@ -842,6 +1836,187 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Coaching loop scrollytelling
+    (function() {
+      const area    = document.getElementById('cl-area');
+      if (!area) return;
+
+      const panels  = { p1: document.getElementById('cl-p1'), p2: document.getElementById('cl-p2'), p3: document.getElementById('cl-p3') };
+      const notif   = document.getElementById('cl-notif');
+      const review  = document.getElementById('cl-review');
+      const link    = document.getElementById('cl-feedback-link');
+      const tap     = document.getElementById('cl-tap');
+
+      let current   = null;
+      let loopTimer = null;
+
+      // Weekly animation loop
+      function resetWeekly() {
+        notif.style.opacity        = '1';
+        review.style.opacity       = '0';
+        review.style.transform     = 'translateY(40px)';
+        review.style.pointerEvents = 'none';
+        tap.style.opacity          = '0';
+        tap.classList.remove('cl-tap-animate');
+      }
+
+      function runWeeklyLoop() {
+        resetWeekly();
+
+        // t=1.0s: tap ring animation over link
+        loopTimer = setTimeout(() => {
+          tap.classList.remove('cl-tap-animate');
+          void tap.offsetWidth; // force reflow to restart animation
+          tap.classList.add('cl-tap-animate');
+
+          // t=2.6s: swap notification → review (slides up)
+          loopTimer = setTimeout(() => {
+            notif.style.opacity        = '0';
+            review.style.opacity       = '1';
+            review.style.transform     = 'translateY(0)';
+            review.style.pointerEvents = 'auto';
+
+            // t=7.5s: restart loop
+            loopTimer = setTimeout(runWeeklyLoop, 5000);
+          }, 600);
+        }, 1000);
+      }
+
+      function stopWeeklyLoop() {
+        clearTimeout(loopTimer);
+        resetWeekly();
+      }
+
+      function showPanel(id) {
+        if (current === id) return;
+        if (current === 'p2') stopWeeklyLoop();
+        current = id;
+        Object.keys(panels).forEach(k => {
+          panels[k].style.opacity      = k === id ? '1' : '0';
+          panels[k].style.pointerEvents = k === id ? 'auto' : 'none';
+        });
+        if (id === 'p2') runWeeklyLoop();
+      }
+
+      function onScroll() {
+        const rect     = area.getBoundingClientRect();
+        const scrollable = area.offsetHeight - window.innerHeight;
+        if (scrollable <= 0) return;
+        const progress = Math.max(0, Math.min(1, -rect.top / scrollable));
+
+        if (progress < 0.33)      showPanel('p1');
+        else if (progress < 0.67) showPanel('p2');
+        else                      showPanel('p3');
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // Durability card animation
+    (function() {
+      var bar     = document.getElementById('dur-bar');
+      var current = document.getElementById('dur-current');
+      var badge   = document.getElementById('dur-badge');
+      if (!bar || !current || !badge) return;
+
+      var timers = [];
+      function clear() { timers.forEach(clearTimeout); timers = []; }
+      function t(ms, fn) { timers.push(setTimeout(fn, ms)); }
+
+      function run() {
+        clear();
+        // Reset to 75% state
+        bar.style.transition = 'none';
+        bar.style.width = '75%';
+        bar.style.background = '#2663eb';
+        current.style.transition = 'none';
+        current.style.color = '#2663eb';
+        current.textContent = '3h 45m';
+        badge.style.opacity = '0';
+
+        // Hold 1.5s, then animate bar to 100%
+        t(1500, function() {
+          bar.style.transition = 'width 1.5s ease';
+          bar.style.width = '100%';
+        });
+        // Partway through — update number
+        t(2300, function() {
+          current.style.transition = 'color 0.5s ease';
+          current.textContent = '5h 00m';
+        });
+        // Bar done — switch to green, show badge
+        t(3000, function() {
+          bar.style.transition = 'background 0.5s ease';
+          bar.style.background = '#16a34a';
+          current.style.color = '#16a34a';
+          badge.style.opacity = '1';
+        });
+        // Hold 2.5s, then loop
+        t(5500, run);
+      }
+
+      var card = document.getElementById('dur-card');
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries) {
+          if (entries[0].isIntersecting) { run(); obs.disconnect(); }
+        }, { threshold: 0.3 });
+        obs.observe(card);
+      } else {
+        run();
+      }
+    })();
+
+    // Hero conversation animation
+    const heroTabs = document.querySelectorAll('.goal-tab');
+    const heroScreens = document.querySelectorAll('.convo-screen');
+    const typingIds = ['typing-0', 'typing-1', 'typing-2'];
+
+    function resetHeroScreen(screen, screenIndex) {
+      screen.querySelectorAll('.msg-row').forEach(r => r.classList.remove('visible'));
+      const el = document.getElementById(typingIds[screenIndex]);
+      if (el) el.classList.remove('visible');
+    }
+
+    function animateHeroScreen(screenIndex, onDone) {
+      const screen = document.getElementById(`screen-${screenIndex}`);
+      const msgQ    = screen.querySelector('.msg-row.coach');
+      const msgUser = screen.querySelector('.msg-row.user');
+      const msgResp = screen.querySelector('.coach-wrap .msg-row');
+      const typingEl = document.getElementById(typingIds[screenIndex]);
+      const t = (ms, fn) => setTimeout(fn, ms);
+
+      t(300,  () => msgQ.classList.add('visible'));
+      t(1400, () => msgUser.classList.add('visible'));
+      t(2100, () => typingEl.classList.add('visible'));
+      t(3400, () => {
+        typingEl.classList.remove('visible');
+        msgResp.classList.add('visible');
+      });
+      t(7000, onDone);
+    }
+
+    function showHeroScreen(index, animate) {
+      heroTabs.forEach(t => t.classList.remove('active'));
+      heroTabs[index].classList.add('active');
+      heroScreens.forEach((s, i) => {
+        s.classList.remove('active');
+        resetHeroScreen(s, i);
+      });
+      document.getElementById(`screen-${index}`).classList.add('active');
+      if (animate !== false) {
+        animateHeroScreen(index, () => showHeroScreen((index + 1) % heroScreens.length, true));
+      }
+    }
+
+    heroTabs.forEach(tab => {
+      tab.addEventListener('click', () => showHeroScreen(parseInt(tab.dataset.tab), true));
+    });
+
+    showHeroScreen(0, true);
+  </script>
 
 </body>
 </html>
