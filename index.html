@@ -132,7 +132,7 @@
     };
   </script>
   <style>
-    html { scroll-behavior: smooth; overflow-x: hidden; }
+    html { overflow-x: hidden; }
     body { max-width: 100%; }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
     .faq-answer.open { max-height: 600px; padding-top: 0; padding-bottom: 16px; }
@@ -1401,7 +1401,7 @@
 
 
   <!-- Comparison Table Section -->
-  <section class="bg-white py-16 lg:py-24 px-4 lg:px-20">
+  <section id="comparison" class="bg-white py-16 lg:py-24 px-4 lg:px-20">
     <div class="max-w-[1024px] mx-auto flex flex-col gap-10 lg:gap-14">
 
       <!-- Header -->
@@ -1571,7 +1571,7 @@
   <div style="max-width: 680px; margin: 0 auto; height: 1px; background: #eceef8;"></div>
 
   <!-- Pricing Section -->
-  <section id="pricing" class="py-16 lg:py-24 px-4 lg:px-20" style="background: white;">
+  <section id="pricing" class="py-16 lg:py-24 px-4 lg:px-20" style="background: #f6f7ff;">
     <div class="max-w-[680px] mx-auto flex flex-col gap-6 lg:gap-8">
 
       <!-- Header -->
@@ -2059,6 +2059,38 @@
     });
 
     showHeroScreen(0, true);
+
+  </script>
+
+  <script>
+    // Handle anchor scrolling with fixed header offset
+    var headerOffset = 0;
+    function scrollToHash(hash) {
+      var el = document.querySelector(hash);
+      if (!el) return;
+      var top = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+      window.scrollTo({ top: top, behavior: 'instant' });
+    }
+
+    // Intercept anchor clicks
+    document.addEventListener('click', function(e) {
+      var link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+      var hash = link.getAttribute('href');
+      if (hash && hash.length > 1) {
+        e.preventDefault();
+        history.pushState(null, '', hash);
+        scrollToHash(hash);
+      }
+    });
+
+    // Handle direct URL with hash on page load
+    if (window.location.hash) {
+      // First scroll: early attempt
+      setTimeout(function() { scrollToHash(window.location.hash); }, 500);
+      // Second scroll: after layout fully settled
+      setTimeout(function() { scrollToHash(window.location.hash); }, 1500);
+    }
   </script>
 
 </body>
