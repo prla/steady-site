@@ -2069,7 +2069,8 @@
       var el = document.querySelector(hash);
       if (!el) return;
       var top = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-      window.scrollTo({ top: top, behavior: 'instant' });
+      var behavior = (hash === '#pricing') ? 'instant' : 'smooth';
+      window.scrollTo({ top: top, behavior: behavior });
     }
 
     // Intercept anchor clicks
