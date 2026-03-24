@@ -562,7 +562,7 @@
   <!-- Header -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm">
     <div class="max-w-[1216px] mx-auto flex items-center justify-between px-4 py-4">
-      <img src="images/LOGO - horizontal.svg" alt="Steady" width="114" height="36" />
+      <a href="#top" style="text-decoration: none;"><img src="images/LOGO - horizontal.svg" alt="Steady" width="114" height="36" /></a>
       <nav class="hidden md:flex items-center gap-8">
         <a href="#coaching-loop" class="text-[#3B435B] text-base hover:text-[#141824] transition-colors">How it Works</a>
         <a href="#features" class="text-[#3B435B] text-base hover:text-[#141824] transition-colors">Features</a>
@@ -1571,7 +1571,7 @@
   <div style="max-width: 680px; margin: 0 auto; height: 1px; background: #eceef8;"></div>
 
   <!-- Pricing Section -->
-  <section id="pricing" class="py-16 lg:py-24 px-4 lg:px-20" style="background: #f6f7ff;">
+  <section id="pricing" class="py-16 lg:py-24 px-4 lg:px-20" style="background: white;">
     <div class="max-w-[680px] mx-auto flex flex-col gap-6 lg:gap-8">
 
       <!-- Header -->
@@ -2066,11 +2066,29 @@
     // Handle anchor scrolling with fixed header offset
     var headerOffset = 0;
     function scrollToHash(hash) {
+      if (hash === '#top') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
       var el = document.querySelector(hash);
       if (!el) return;
-      var top = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-      var behavior = (hash === '#pricing') ? 'instant' : 'smooth';
-      window.scrollTo({ top: top, behavior: behavior });
+
+      var duration = 800;
+      var start = window.pageYOffset;
+      var startTime = null;
+
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        var ease = progress < 0.5
+          ? 4 * progress * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+        // Recalculate target every frame to handle layout shifts
+        var target = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        window.scrollTo(0, start + (target - start) * ease);
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
     }
 
     // Intercept anchor clicks
