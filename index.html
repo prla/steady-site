@@ -48,7 +48,7 @@
     "offers": {
       "@type": "Offer",
       "availability": "https://schema.org/OnlineOnly",
-      "price": "35",
+      "price": "29.99",
       "priceCurrency": "EUR"
     },
     "publisher": {
@@ -1891,13 +1891,28 @@
 
   <!-- Footer -->
   <footer class="border-t border-[#E5E7EB] py-8 px-4">
-    <div class="max-w-[1216px] mx-auto flex flex-col lg:flex-row items-center lg:justify-between gap-4 text-[#3B435B] text-sm">
-      <img src="images/LOGO - horizontal.svg" alt="Steady" width="114" height="36" class="opacity-60" />
-      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-        <a href="/privacy.html" class="hover:text-[#141824] transition-colors">Privacy</a>
-        <a href="/terms.html" class="hover:text-[#141824] transition-colors">Terms</a>
-        <a href="mailto:paulo@trainsteady.com" class="hover:text-[#141824] transition-colors">Contact</a>
-        <span>&copy; 2026 Steady</span>
+    <div class="max-w-[1216px] mx-auto text-[#3B435B] text-sm">
+      <!-- Desktop -->
+      <div class="hidden lg:flex items-center justify-between">
+        <img src="images/LOGO - horizontal.svg" alt="Steady" width="114" height="36" />
+        <div class="flex items-center gap-6">
+          <a href="/knowledge-base.html" class="hover:text-[#141824] transition-colors">Knowledge Base</a>
+          <a href="/privacy.html" class="hover:text-[#141824] transition-colors">Privacy</a>
+          <a href="/terms.html" class="hover:text-[#141824] transition-colors">Terms</a>
+          <a href="mailto:hello@trainsteady.com" class="hover:text-[#141824] transition-colors">Contact</a>
+          <span>&copy; 2026 Steady</span>
+        </div>
+      </div>
+      <!-- Mobile -->
+      <div class="flex lg:hidden flex-col gap-5">
+        <img src="images/LOGO - horizontal.svg" alt="Steady" width="114" height="36" />
+        <a href="/knowledge-base.html" class="text-[#141824] font-medium hover:opacity-80 transition-opacity">Knowledge Base</a>
+        <div class="flex flex-wrap gap-x-6 gap-y-2">
+          <a href="/privacy.html" class="hover:text-[#141824] transition-colors">Privacy</a>
+          <a href="/terms.html" class="hover:text-[#141824] transition-colors">Terms</a>
+          <a href="mailto:hello@trainsteady.com" class="hover:text-[#141824] transition-colors">Contact</a>
+        </div>
+        <span class="text-[#9499BB]">&copy; 2026 Steady</span>
       </div>
     </div>
   </footer>
