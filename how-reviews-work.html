@@ -106,10 +106,12 @@
               <li class="flex gap-3 items-start"><span class="w-2 h-2 rounded-full bg-[#2663EB] mt-[10px] shrink-0"></span><span>What actually happened (your power, heart rate, duration, zone distribution, decoupling)</span></li>
               <li class="flex gap-3 items-start"><span class="w-2 h-2 rounded-full bg-[#2663EB] mt-[10px] shrink-0"></span><span>If it was an interval session: how each rep compared to target, whether you faded across reps, how you paced within intervals, recovery quality between reps</span></li>
               <li class="flex gap-3 items-start"><span class="w-2 h-2 rounded-full bg-[#2663EB] mt-[10px] shrink-0"></span><span>Your recent 2 weeks of training — did you complete what was planned? Any patterns?</span></li>
-              <li class="flex gap-3 items-start"><span class="w-2 h-2 rounded-full bg-[#2663EB] mt-[10px] shrink-0"></span><span>Your RPE and comments, if you provided them</span></li>
+              <li class="flex gap-3 items-start"><span class="w-2 h-2 rounded-full bg-[#2663EB] mt-[10px] shrink-0"></span><span>Your RPE and any context you shared about the ride</span></li>
               <li class="flex gap-3 items-start"><span class="w-2 h-2 rounded-full bg-[#2663EB] mt-[10px] shrink-0"></span><span>What's coming next in the plan</span></li>
+              <li class="flex gap-3 items-start"><span class="w-2 h-2 rounded-full bg-[#2663EB] mt-[10px] shrink-0"></span><span>Your coaching notebook — accumulated observations about how you respond to training</span></li>
             </ul>
             <p>The AI generates a short, direct review — 2-3 sentences, in the voice of a human coach. It never references internal system terms. It tells you what the ride accomplished, what to pay attention to, and what's next.</p>
+            <p><strong class="text-[#141824] font-semibold">Races and group rides are handled differently.</strong> When Steady detects a race or group ride (from the activity name), it doesn't compare it against whatever was planned. Instead, it evaluates the ride on its own merits — how you performed, what you executed, and what the recovery cost means for your upcoming sessions. If you raced on a rest day, it flags the recovery impact without lecturing you about skipping rest.</p>
           </div>
           </div>
         </div>
@@ -134,7 +136,9 @@
               <li class="flex gap-3 items-start"><span class="w-6 h-6 rounded-full bg-[#F3F7FF] text-[#2663EB] text-[13px] font-semibold flex items-center justify-center shrink-0 mt-0.5">3</span><span>What's coming next week and why?</span></li>
               <li class="flex gap-3 items-start"><span class="w-6 h-6 rounded-full bg-[#F3F7FF] text-[#2663EB] text-[13px] font-semibold flex items-center justify-center shrink-0 mt-0.5">4</span><span>One actionable coaching note.</span></li>
             </ol>
-            <p>It also sees the previous week's review so it can escalate emerging patterns rather than repeating itself.</p>
+            <p>It also sees the previous week's review so it can escalate emerging patterns rather than repeating itself. And it draws on your coaching notebook — months of accumulated observations about how you respond to training, what motivates you, and what your tendencies are.</p>
+            <p>The weekly review can also <strong class="text-[#141824] font-semibold">adjust next week's plan</strong> based on what it sees. If you're accumulating fatigue, it might downgrade intensity or reduce session duration for the coming week. If you skipped key sessions, it won't just note it — it'll restructure the week ahead to get you back on track without overloading.</p>
+            <p>You'll get an email when your weekly review is ready, with a preview of the key insight. Tap the link and it opens directly in the coaching chat.</p>
           </div>
           </div>
         </div>
@@ -177,7 +181,7 @@
           <div class="text-[16px] leading-[1.8] text-[#515775] font-normal flex flex-col gap-4">
             <p>RPE (rate of perceived exertion) captures what power data can't — heat, poor sleep, work stress, motivation, how your legs actually felt.</p>
             <p>When your perceived effort doesn't match your power output, that's information. High RPE with low power might mean accumulated fatigue or life stress. Low RPE with high power could signal a fitness breakthrough.</p>
-            <p>You have a 24-hour window to add RPE and a comment after each ride. If you don't, the review generates from data alone. If you do, the review weaves in your subjective experience — "You said it felt hard despite moderate power. Could be accumulated fatigue from the long ride two days ago."</p>
+            <p>After each ride, the coach asks you to rate how the ride felt. Once you submit your RPE, the coach follows up: "Anything else about this ride?" — giving you a chance to add context (flat tire, felt sick, did a group ride instead of the planned session). Your response shapes the review. If you say "no" or nothing notable, the review generates from data alone. If you share something, it gets woven in — "You mentioned work stress this week. That tracks with the RPE-to-power mismatch we're seeing."</p>
           </div>
           </div>
         </div>
@@ -197,11 +201,13 @@
           <div class="text-[16px] leading-[1.8] text-[#515775] font-normal flex flex-col gap-4">
             <p>Yes, in several ways:</p>
             <ul class="flex flex-col gap-3 pl-0">
+              <li class="flex gap-3 items-start"><span class="w-2 h-2 rounded-full bg-[#2663EB] mt-[10px] shrink-0"></span><span><strong class="text-[#141824] font-semibold">Coaching notebook</strong> — Steady maintains a persistent coaching wiki for each athlete. After every ride review, weekly review, and block review, observations get distilled into the notebook: how you respond to threshold work, whether you tend to skip weekends, what motivates you, your injury patterns, how your body handles volume increases. This notebook is injected into every future review and coaching interaction — so the coach has months of context, not just the current week.</span></li>
               <li class="flex gap-3 items-start"><span class="w-2 h-2 rounded-full bg-[#2663EB] mt-[10px] shrink-0"></span><span>Each new training block inherits the previous block's peak metrics. Progression starts where you left off, not from scratch.</span></li>
               <li class="flex gap-3 items-start"><span class="w-2 h-2 rounded-full bg-[#2663EB] mt-[10px] shrink-0"></span><span>The review system tracks your last 2 weeks of execution. If you consistently cut short on Wednesdays or overperform on weekends, the coach notices.</span></li>
               <li class="flex gap-3 items-start"><span class="w-2 h-2 rounded-full bg-[#2663EB] mt-[10px] shrink-0"></span><span>As your FTP and aerobic threshold change, zone boundaries auto-adjust and the gap analysis re-runs with current data, shifting priorities.</span></li>
               <li class="flex gap-3 items-start"><span class="w-2 h-2 rounded-full bg-[#2663EB] mt-[10px] shrink-0"></span><span>Each review sees the previous reviews to avoid repetition and to escalate patterns rather than mentioning them once.</span></li>
             </ul>
+            <p>The net effect: a coach who started working with you 3 months ago remembers everything from month 1. It doesn't start from scratch each conversation.</p>
           </div>
           </div>
         </div>
