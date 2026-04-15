@@ -1684,24 +1684,6 @@
       <div class="flex flex-col gap-4">
         <div class="faq-item bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl">
           <button onclick="toggleFaq(this)" class="w-full p-4 flex items-center justify-between gap-6 text-left">
-            <span class="text-[#3B435B] text-[16px] leading-[24px] font-medium">What events does Steady support?</span>
-            <svg class="faq-chevron shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#3B435B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="faq-answer px-4 text-[#3B435B] text-base leading-relaxed">
-            Steady supports any cycling goal with a measurable target and a timeline: single-day events (granfondos, sportives, centuries), performance goals (Zwift category upgrade, FTP target, segment PB), and multi-day rides (Mallorca, TransAlp, bikepacking trips).
-          </div>
-        </div>
-        <div class="faq-item bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl">
-          <button onclick="toggleFaq(this)" class="w-full p-4 flex items-center justify-between gap-6 text-left">
-            <span class="text-[#3B435B] text-[16px] leading-[24px] font-medium">Do I need a power meter?</span>
-            <svg class="faq-chevron shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#3B435B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="faq-answer px-4 text-[#3B435B] text-base leading-relaxed">
-            Yes. Steady uses power data to measure your current capabilities, track progress, and calibrate your training. A power meter on your bike (pedal, crank, or hub-based) is required.
-          </div>
-        </div>
-        <div class="faq-item bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl">
-          <button onclick="toggleFaq(this)" class="w-full p-4 flex items-center justify-between gap-6 text-left">
             <span class="text-[#3B435B] text-[16px] leading-[24px] font-medium">How is this different from a human coach?</span>
             <svg class="faq-chevron shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#3B435B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -1711,11 +1693,22 @@
         </div>
         <div class="faq-item bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl">
           <button onclick="toggleFaq(this)" class="w-full p-4 flex items-center justify-between gap-6 text-left">
-            <span class="text-[#3B435B] text-[16px] leading-[24px] font-medium">How does the free trial work?</span>
+            <span class="text-[#3B435B] text-[16px] leading-[24px] font-medium">Is this just AI-generated training?</span>
             <svg class="faq-chevron shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#3B435B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div class="faq-answer px-4 text-[#3B435B] text-base leading-relaxed">
-            You get 14 days of full access — no credit card required, no commitment. Your plan is built, your rides are reviewed, and your coach is available from day one. If Steady isn't for you, just don't subscribe. No awkward cancellation, no charges.
+            Steady is a coaching product. The training plan is the starting point — what makes Steady different is what happens after: personalized feedback after every ride, weekly reviews that reflect what actually happened, and a plan that adapts to how you respond. No training app does this. A human coach does.
+            <br/><br/>
+            The plan itself isn't LLM output either. By the time Steady writes a workout, most of the decisions are already made deterministically: your event's specific demands have been analysed, the gap between your current fitness and what's required has been measured in real numbers, and the training architecture — volume, intensity zones, block structure, progression — is built from that gap, not generated from a prompt. Intensity is anchored to your aerobic threshold, not FTP. Every 4 weeks, the plan is rebuilt from scratch based on how your fitness actually changed. The AI handles the texture. The structure comes from training science.
+          </div>
+        </div>
+        <div class="faq-item bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl">
+          <button onclick="toggleFaq(this)" class="w-full p-4 flex items-center justify-between gap-6 text-left">
+            <span class="text-[#3B435B] text-[16px] leading-[24px] font-medium">What events does Steady support?</span>
+            <svg class="faq-chevron shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#3B435B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer px-4 text-[#3B435B] text-base leading-relaxed">
+            Steady supports any cycling goal with a measurable target and a timeline: single-day events (granfondos, sportives, centuries), performance goals (Zwift category upgrade, FTP target, segment PB), and multi-day rides (Mallorca, TransAlp, bikepacking trips).
           </div>
         </div>
         <div class="faq-item bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl">
@@ -1729,22 +1722,29 @@
         </div>
         <div class="faq-item bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl">
           <button onclick="toggleFaq(this)" class="w-full p-4 flex items-center justify-between gap-6 text-left">
+            <span class="text-[#3B435B] text-[16px] leading-[24px] font-medium">How does the free trial work?</span>
+            <svg class="faq-chevron shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#3B435B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer px-4 text-[#3B435B] text-base leading-relaxed">
+            You get 14 days of full access — no credit card required, no commitment. Your plan is built, your rides are reviewed, and your coach is available from day one. If Steady isn't for you, just don't subscribe. No awkward cancellation, no charges.
+          </div>
+        </div>
+        <div class="faq-item bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl">
+          <button onclick="toggleFaq(this)" class="w-full p-4 flex items-center justify-between gap-6 text-left">
+            <span class="text-[#3B435B] text-[16px] leading-[24px] font-medium">Do I need a power meter?</span>
+            <svg class="faq-chevron shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#3B435B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-answer px-4 text-[#3B435B] text-base leading-relaxed">
+            Yes. Steady uses power data to measure your current capabilities, track progress, and calibrate your training. A power meter on your bike (pedal, crank, or hub-based) is required.
+          </div>
+        </div>
+        <div class="faq-item bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl">
+          <button onclick="toggleFaq(this)" class="w-full p-4 flex items-center justify-between gap-6 text-left">
             <span class="text-[#3B435B] text-[16px] leading-[24px] font-medium">I'm not great with tech. Is this complicated?</span>
             <svg class="faq-chevron shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#3B435B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div class="faq-answer px-4 text-[#3B435B] text-base leading-relaxed">
             Not at all. Connect your Strava account, tell us about your event, and Steady handles the rest. You'll see clear workouts with plain-language coaching explaining what to do and why.
-          </div>
-        </div>
-        <div class="faq-item bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl">
-          <button onclick="toggleFaq(this)" class="w-full p-4 flex items-center justify-between gap-6 text-left">
-            <span class="text-[#3B435B] text-[16px] leading-[24px] font-medium">Is this just AI-generated training?</span>
-            <svg class="faq-chevron shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#3B435B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="faq-answer px-4 text-[#3B435B] text-base leading-relaxed">
-            Steady is a coaching product. The training plan is the starting point — what makes Steady different is what happens after: personalized feedback after every ride, weekly reviews that reflect what actually happened, and a plan that adapts to how you respond. No training app does this. A human coach does.
-            <br/><br/>
-            The plan itself isn't LLM output either. By the time Steady writes a workout, most of the decisions are already made deterministically: your event's specific demands have been analysed, the gap between your current fitness and what's required has been measured in real numbers, and the training architecture — volume, intensity zones, block structure, progression — is built from that gap, not generated from a prompt. Intensity is anchored to your aerobic threshold, not FTP. Every 4 weeks, the plan is rebuilt from scratch based on how your fitness actually changed. The AI handles the texture. The structure comes from training science.
           </div>
         </div>
         <div class="faq-item bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl">
