@@ -1605,7 +1605,7 @@
         <div class="pricing-cards-grid" style="padding: 36px 40px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
 
           <!-- Founding -->
-          <div style="background: white; border: 2px solid #4361ee; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 8px; position: relative; box-shadow: 0 4px 20px rgba(67,97,238,0.12);">
+          <div id="founding-card" style="cursor: pointer; background: white; border: 2px solid #4361ee; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 8px; position: relative; box-shadow: 0 4px 20px rgba(67,97,238,0.12);">
             <div style="position: absolute; top: -11px; left: 16px; background: linear-gradient(135deg, #4361EE 0%, #7B4FE0 100%); color: white; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px;">Founding member</div>
             <div style="display: flex; align-items: baseline; gap: 4px; margin-top: 6px;">
               <span style="font-size: 36px; font-weight: 800; color: #2663eb; letter-spacing: -1px; line-height: 1;">€9<span style="font-size: 22px;">.99</span></span>
@@ -2144,6 +2144,13 @@
       // Second scroll: after layout fully settled
       setTimeout(function() { scrollToHash(window.location.hash); }, 1500);
     }
+  </script>
+
+  <script>
+    document.getElementById('founding-card').addEventListener('click', function() {
+      if (typeof posthog !== 'undefined') posthog.capture('cta.founding_card_clicked', {}, { transport: 'sendBeacon' });
+      window.location.href = 'https://app.trainsteady.com/signup';
+    });
   </script>
 
 </body>
