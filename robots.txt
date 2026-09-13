@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /former-landing-page.html
 
 Sitemap: https://trainsteady.com/sitemap.xml
